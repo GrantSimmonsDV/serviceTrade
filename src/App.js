@@ -1,4 +1,5 @@
 import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Navbar from "./components/navbar/Navbar";
 import Login from "./components/login/Login";
@@ -8,15 +9,25 @@ import Chat from "./components/chat/Chat";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <div className="content">
-        //App components - react-router-dom
-        <Profile />
-        <Trading />
-        <Chat />
+    <Router>
+      <div className="App">
+        <Navbar />
+        <div className="content">
+          //App components - react-router-dom
+          <Switch>
+            <Route path="/profile">
+              <Profile />
+            </Route>
+            <Route path="/trading">
+              <Trading />
+            </Route>
+            <Route path="/chat">
+              <Chat />
+            </Route>
+          </Switch>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 

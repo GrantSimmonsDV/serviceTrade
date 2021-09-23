@@ -7,14 +7,17 @@
 // Able to logout
 // Is login/logout a CRUD action  *********
 
+import {Link} from 'react-router-dom';
+import axios from "axios";
+
 function Navbar() {
   return (
     <div className="navbar">
       <h1>serviceTrade</h1>
       <div className="links">
-        <a href="/profile">Profile</a>
-        <a href="/trading">Trade</a>
-        <a href="/chat">Chat</a>
+        <Link to="/profile">Profile</Link>
+        <Link to="/trading">Trading</Link>
+        <Link to="/chat">Chat</Link>
       </div>
     </div>
   );

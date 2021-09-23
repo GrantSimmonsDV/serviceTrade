@@ -7,8 +7,17 @@
 //POST request to create/begin chat with other user of the match
 
 import React from "react";
+import axios from "axios";
 
 export default function Trading() {
+
+//create/begin chat with other user of the match
+axios.post("/trading")
+.then((res) => {
+
+})
+
+
   return (
     <div className="trading">
       <h2>Trading comp</h2>

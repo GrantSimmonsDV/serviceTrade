@@ -16,8 +16,22 @@
 //PUT request to update profile data
 
 import React from "react";
+import axios from "axios";
 
 export default function Profile() {
+
+//create user's profile data in db
+axios.post("/profile")
+.then((res) => {
+
+})
+
+//update profile data
+axios.put("/profile/:id")
+.then((res) => {
+
+})
+
   return (
     <div className="profile">
       <h2>Profile comp</h2>

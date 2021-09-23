@@ -13,8 +13,21 @@
 //DELETE request to remove message
 
 import React from "react";
+import axios from "axios";
 
 export default function Chat() {
+  // User is able to type in a message
+  // Click send
+  axios.get("/chat/:id").then((res) => {
+
+  });
+
+  //to create message
+  axios.post("/chat")
+  .then((res) => {
+    
+  });
+
   return (
     <div className="chat">
       <h2>Chat comp</h2>
