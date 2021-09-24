@@ -1,4 +1,3 @@
-sql queries here v v v
 
-SELECT * from Users
+SELECT * from users
 WHERE email = $1

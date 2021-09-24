@@ -10,9 +10,12 @@ const app = express();
 
 app.use(express.json());
 
+
 //api Endpoints
 //Login
 app.post("/login", auth.login);
+//Register
+app.post("/register", auth.register)
 //Chat
 app.get("/chat/:id", siteHandling.getChatHist);
 app.post("/chat", siteHandling.createMsg);
@@ -22,6 +25,7 @@ app.post("/profile", siteHandling.createProfile);
 app.put("/profile/:id", siteHandling.updateProfile);
 //Trading
 app.post("/trading", siteHandling.createChat);
+
 
 //connecting to db with Massive
 massive({
@@ -33,6 +37,7 @@ massive({
   app.set("db", dbInstance);
   console.log("db connected");
 });
+
 
 app.listen(SERVER_PORT, () => {
   console.log(`Server running on ${SERVER_PORT}`);
