@@ -7,9 +7,9 @@ module.exports = {
 
     //verify email is in db
     const [userData] = await db.get_user_by_email([email]);
+    
+    
     //verify password goes with specific email in db
-
-
     if (userData.email === email) {
         if (userData.password === password) {
             res.status(200).send(userData)

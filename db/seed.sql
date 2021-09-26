@@ -7,6 +7,7 @@ CREATE TABLE "users" (
   email varchar(255) default NULL,
   password TEXT default NULL,
   city varchar(255),
+  state varchar(2),
   flexible_trade boolean default NULL,
   offered_service_id_1 integer NULL,
   offered_service_id_2 integer NULL,
@@ -110,12 +111,12 @@ VALUES
   ('Auto','Duis ac', 'https://www.freeimages.com/photo/tractor-3-1386656'),
   ('Auto','congue a, aliquet vel, vulputate', 'https://www.freeimages.com/photo/tractor-3-1386656');
 
-INSERT INTO users (full_name,email,password,city,flexible_trade,offered_service_id_1,offered_service_id_2,offered_service_id_3,offered_service_id_4,needed_service_id_1,needed_service_id_2,needed_service_id_3,needed_service_id_4)
+INSERT INTO users (full_name,email,password,city, state, flexible_trade,offered_service_id_1,offered_service_id_2,offered_service_id_3,offered_service_id_4,needed_service_id_1,needed_service_id_2,needed_service_id_3,needed_service_id_4)
 VALUES
-  ('Hu Moreno','malesuada.id@disparturient.net','imperdiet','Dallas',true,1,2,3,4,1,2,3,4),
-  ('Bree Collins','metus.eu@acurnaut.ca','posuere','New Haven',true,5,6,7,8,5,6,7,8),
-  ('Kathleen Johnston','varius.et@arcu.co.uk','imperdiet','Olathe',true,9,10,11,12,9,10,11,12),
-  ('Dahlia Best','montes.nascetur@gravidasagittisduis.ca','dolor','Wyoming',true,13,14,15,16,13,14,15,16);
+  ('Hu Moreno','malesuada.id@disparturient.net','imperdiet','Dallas', 'TX', true,1,2,3,4,1,2,3,4),
+  ('Bree Collins','metus.eu@acurnaut.ca','posuere','New Haven', 'OH',true,5,6,7,8,5,6,7,8),
+  ('Kathleen Johnston','varius.et@arcu.co.uk','imperdiet','Olathe', 'OR', true,9,10,11,12,9,10,11,12),
+  ('Dahlia Best','montes.nascetur@gravidasagittisduis.ca','dolor','Wyoming', 'ND', true,13,14,15,16,13,14,15,16);
 
 
 INSERT INTO chat (user_id_1,user_id_2)
