@@ -12,13 +12,16 @@ app.use(express.json());
 
 
 //api Endpoints
+
 //Login
 app.post("/login", auth.login);
 //Register
 app.post("/register", auth.register)
+
 //Chat
-app.get("/chat/:id", siteHandling.getChatHist);
 app.post("/chat", siteHandling.createMsg);
+app.get("/chat/", siteHandling.getChatHist);
+app.get("/chat/:chat_id", siteHandling.getMessages)
 //Navbar
 //Profile
 app.post("/profile", siteHandling.createProfile);

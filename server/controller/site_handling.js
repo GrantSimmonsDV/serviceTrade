@@ -11,7 +11,23 @@ module.exports = {
     res.status(200).send("new message created")
 
   },
-  getChatHist: (req, res) => {
+  getChatHist: async (req, res) => {
+    const db = req.app.get("db");
+    const {user_id_1} = req.body;
+
+    const getChat = await db.get_chat([user_id_1])
+    
+   
+    res.status(200).send(getChat)
+  },
+
+  getMessages: async (req, res) => {
+    const db = req.app.get("db");
+    const {chat_id} = req.params;
+
+    const getMsg = await db.get_messages([chat_id]);
+
+    res.status(200).send(getMsg) 
 
   },
   
@@ -28,16 +44,40 @@ module.exports = {
     res.status(200).send("Profile created")
   },
   
-  
-  updateProfile: (req, res) => {
+  updateProfile: async (req, res) => {
+    const db = req.app.get("db")
+    
+    const {id} = req.params
 
+    const { full_name, city, state, flexible_trade, offered_service_id_1, offered_service_id_2, offered_service_id_3, offered_service_id_4, needed_service_id_1, needed_service_id_2, needed_service_id_3, needed_service_id_4 } = req.body;
+
+    try {const updateId = await db.update_profile_by_id([id, city, state, flexible_trade, offered_service_id_1, offered_service_id_2, offered_service_id_3, offered_service_id_4, needed_service_id_1, needed_service_id_2, needed_service_id_3, needed_service_id_4, full_name])
+
+    res.status(200).send(updateId)}
+
+    catch(e){
+        console.log(e)
+    }
+
+    // const updateID = req.param.id;
+
+    // const profileIndex = users.findIndex((user) => user.id == updateID);
+
+    // let user = users[profileIndex];
   },
+
 
   //TRADING 
   createChat: async (req, res) => {
     const db = req.app.get("db");
     const { user_id_1, user_id_2 } = req.body;
-    await db.create_chat.sql([user_id_1, user_id_2])
+    await db.create_chat([user_id_1, user_id_2])
     res.status(200).send("New chat created")
   },
 };
+
+//if statement 
+
+//error handling to check for creating duplicate chats for those that already exist
+
+
