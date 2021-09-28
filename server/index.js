@@ -24,8 +24,8 @@ app.get("/chat/", siteHandling.getChatHist);
 app.get("/chat/:chat_id", siteHandling.getMessages)
 //Navbar
 //Profile
-app.post("/profile", siteHandling.createProfile);
 app.put("/profile/:id", siteHandling.updateProfile);
+app.delete("profile/:id", siteHandling.deleteProfile);
 //Trading
 app.post("/trading", siteHandling.createChat);
 
