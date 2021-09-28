@@ -11,7 +11,7 @@
 // Can type in specific skills for selected needed services category
 // Can check box to notify they're flexible on trades
 // User can click Save for profile input
-// POST request to create user's profile data in database **************
+// PUT request to create user's profile data in database
 // User can update profile and click Save Changes
 //PUT request to update profile data
 

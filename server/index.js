@@ -13,19 +13,21 @@ app.use(express.json());
 
 //api Endpoints
 
-//Login
-app.post("/login", auth.login);
 //Register
 app.post("/register", auth.register)
+//Login
+app.post("/login", auth.login);
+//Logout
+app.delete("/logout", auth.logout)
 
 //Chat
 app.post("/chat", siteHandling.createMsg);
-app.get("/chat/", siteHandling.getChatHist);
+app.get("/chat", siteHandling.getChatHist);
 app.get("/chat/:chat_id", siteHandling.getMessages)
 //Navbar
 //Profile
 app.put("/profile/:id", siteHandling.updateProfile);
-app.delete("profile/:id", siteHandling.deleteProfile);
+app.delete("/profile/:id", siteHandling.deleteProfile);
 //Trading
 app.post("/trading", siteHandling.createChat);
 

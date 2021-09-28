@@ -42,11 +42,12 @@ updateProfile: async (req, res) => {
 
 deleteProfile: async (req, res) => {
 const db = req.app.get("db")
-const{id} = req.params;
 
-const deleteId = await db.delete_profile([id])
+const {id} = req.params;
 
-res.status(200).send(deleteId)
+await db.delete_profile([id])
+// console.log(deleteId)
+res.status(200).send("Item has been deleted")
 
 },
 

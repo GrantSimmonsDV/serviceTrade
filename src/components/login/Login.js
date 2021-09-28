@@ -9,10 +9,13 @@ import React from "react";
 import axios from "axios";
 
 export default function Login() {
-  axios.post("/login"
+  
+  axios.post("/login")
 //   ,{ email, password }
-  )
-  .then();
+.then((res) => {
+   
+})
+
   
   return (
     <div className="login">

@@ -15,6 +15,7 @@ function Navbar() {
     <div className="navbar">
       <h1>serviceTrade</h1>
       <div className="links">
+        <Link to="/register">Register</Link>
         <Link to="/profile">Profile</Link>
         <Link to="/trading">Trading</Link>
         <Link to="/chat">Chat</Link>
