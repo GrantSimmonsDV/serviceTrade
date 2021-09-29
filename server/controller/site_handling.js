@@ -39,10 +39,7 @@ offeredServices: async (req, res) => {
 
     let count = 0;
     //try console log on count
-    console.log(count)
-
-    
-
+    // console.log(count)
     const limit = offeredLimit.map(count => {
         //loop through and count each time to then hit limit and stop
         if (count < 3) {
