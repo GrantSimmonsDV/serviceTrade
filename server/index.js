@@ -26,6 +26,9 @@ app.get("/chat", siteHandling.getChatHist);
 app.get("/chat/:chat_id", siteHandling.getMessages)
 //Navbar
 //Profile
+app.post("/profile/:user_id", siteHandling.offeredServices);
+app.post("/profile/:id", siteHandling.neededServices);
+
 app.put("/profile/:id", siteHandling.updateProfile);
 app.delete("/profile/:id", siteHandling.deleteProfile);
 //Trading

@@ -3,7 +3,7 @@ module.exports = {
   
         const db = req.app.get("db")
         const {email, password } = req.body;
-  
+       
         await db.new_account([email, password])
   
         //Error handling goes here if adding.
@@ -11,7 +11,7 @@ module.exports = {
         res.status(200).send("Successfully signed in")
   },
 
-  
+
   login: async (req, res) => {
     //accessing what we declared in index.js
     const db = req.app.get("db");

@@ -6,17 +6,10 @@ CREATE TABLE "users" (
   full_name varchar(255) default NULL,
   email varchar(255) default NULL,
   password TEXT default NULL,
+  profile_pic TEXT default NULL,
   city varchar(255),
   state varchar(2),
-  flexible_trade boolean default NULL,
-  offered_service_id_1 integer NULL,
-  offered_service_id_2 integer NULL,
-  offered_service_id_3 integer NULL,
-  offered_service_id_4 integer NULL,
-  needed_service_id_1 integer NULL,
-  needed_service_id_2 integer NULL,
-  needed_service_id_3 integer NULL,
-  needed_service_id_4 integer NULL
+  flexible_trade boolean default NULL
 );
 
 CREATE TABLE "chat" (
@@ -35,6 +28,7 @@ CREATE TABLE "messages" (
 
 CREATE TABLE "offered_service" (
   id SERIAL PRIMARY KEY,
+  user_id integer NULL,
   service_category TEXT default NULL,
   service_define TEXT default NULL,
   service_image TEXT default NULL
@@ -42,19 +36,14 @@ CREATE TABLE "offered_service" (
 
 CREATE TABLE "needed_service" (
   id SERIAL PRIMARY KEY,
+  user_id integer NULL,
   service_category TEXT default NULL,
   service_define TEXT default NULL,
   service_image TEXT default NULL
 );
 
-ALTER TABLE users ADD FOREIGN KEY (offered_service_id_1) REFERENCES offered_service(id);
-ALTER TABLE users ADD FOREIGN KEY (offered_service_id_2) REFERENCES offered_service(id);
-ALTER TABLE users ADD FOREIGN KEY (offered_service_id_3) REFERENCES offered_service(id);
-ALTER TABLE users ADD FOREIGN KEY (offered_service_id_4) REFERENCES offered_service(id);
-ALTER TABLE users ADD FOREIGN KEY (needed_service_id_1) REFERENCES needed_service(id);
-ALTER TABLE users ADD FOREIGN KEY (needed_service_id_2) REFERENCES needed_service(id);
-ALTER TABLE users ADD FOREIGN KEY (needed_service_id_3) REFERENCES needed_service(id);
-ALTER TABLE users ADD FOREIGN KEY (needed_service_id_4) REFERENCES needed_service(id);
+ALTER TABLE offered_service ADD FOREIGN KEY (user_id) REFERENCES users(id);
+ALTER TABLE needed_service ADD FOREIGN KEY (user_id) REFERENCES users(id);
 
 ALTER TABLE chat ADD FOREIGN KEY (user_id_1) REFERENCES users(id);
 ALTER TABLE chat ADD FOREIGN KEY (user_id_2) REFERENCES users(id);
@@ -63,60 +52,24 @@ ALTER TABLE messages ADD FOREIGN KEY (user_id) REFERENCES users(id);
 ALTER TABLE messages ADD FOREIGN KEY (chat_id) REFERENCES chat(id);
 
 
-
-INSERT INTO offered_service (service_category,service_define, service_image)
+INSERT INTO users (full_name,email,password, profile_pic, city, state, flexible_trade)
 VALUES
-   ('Auto','mus. Proin vel arcu', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Yard','et malesuada', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','ipsum dolor sit amet, consectetuer', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','Duis ac', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','congue a, aliquet vel, vulputate', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','mus. Proin vel arcu', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Yard','et malesuada', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','ipsum dolor sit amet, consectetuer', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','Duis ac', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','congue a, aliquet vel, vulputate', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','mus. Proin vel arcu', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Yard','et malesuada', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','ipsum dolor sit amet, consectetuer', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','Duis ac', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','congue a, aliquet vel, vulputate', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','mus. Proin vel arcu', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Yard','et malesuada', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','ipsum dolor sit amet, consectetuer', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','Duis ac', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','congue a, aliquet vel, vulputate', 'https://www.freeimages.com/photo/tractor-3-1386656');
+  ('Hu Moreno','malesuada.id@disparturient.net','imperdiet','https://www.freeimages.com/photo/tractor-3-1386656','Dallas', 'TX', true),
+  ('Bree Collins','metus.eu@acurnaut.ca','posuere','https://www.freeimages.com/photo/tractor-3-1386656','New Haven', 'OH',true),
+  ('Kathleen Johnston','varius.et@arcu.co.uk','imperdiet','https://www.freeimages.com/photo/tractor-3-1386656','Olathe', 'OR', true),
+  ('Dahlia Best','montes.nascetur@gravidasagittisduis.ca','dolor','https://www.freeimages.com/photo/tractor-3-1386656','Wyoming', 'ND', true);
 
-
-INSERT INTO needed_service (service_category,service_define, service_image)
+INSERT INTO offered_service (service_category,service_define, service_image, user_id)
 VALUES
-  ('Auto','mus. Proin vel arcu', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Yard','et malesuada', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','ipsum dolor sit amet, consectetuer', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','Duis ac', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','congue a, aliquet vel, vulputate', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','mus. Proin vel arcu', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Yard','et malesuada', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','ipsum dolor sit amet, consectetuer', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','Duis ac', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','congue a, aliquet vel, vulputate', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','mus. Proin vel arcu', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Yard','et malesuada', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','ipsum dolor sit amet, consectetuer', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','Duis ac', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','congue a, aliquet vel, vulputate', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','mus. Proin vel arcu', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Yard','et malesuada', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','ipsum dolor sit amet, consectetuer', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','Duis ac', 'https://www.freeimages.com/photo/tractor-3-1386656'),
-  ('Auto','congue a, aliquet vel, vulputate', 'https://www.freeimages.com/photo/tractor-3-1386656');
-
-INSERT INTO users (full_name,email,password,city, state, flexible_trade,offered_service_id_1,offered_service_id_2,offered_service_id_3,offered_service_id_4,needed_service_id_1,needed_service_id_2,needed_service_id_3,needed_service_id_4)
+  ('Auto','mus. Proin vel arcu','https://www.freeimages.com/photo/tractor-3-1386656',1),
+  ('Yard','et malesuada','https://www.freeimages.com/photo/tractor-3-1386656',2),
+  ('Auto','ipsum dolor sit amet, consectetuer','https://www.freeimages.com/photo/tractor-3-1386656',3);
+ 
+INSERT INTO needed_service (service_category,service_define, service_image, user_id)
 VALUES
-  ('Hu Moreno','malesuada.id@disparturient.net','imperdiet','Dallas', 'TX', true,1,2,3,4,1,2,3,4),
-  ('Bree Collins','metus.eu@acurnaut.ca','posuere','New Haven', 'OH',true,5,6,7,8,5,6,7,8),
-  ('Kathleen Johnston','varius.et@arcu.co.uk','imperdiet','Olathe', 'OR', true,9,10,11,12,9,10,11,12),
-  ('Dahlia Best','montes.nascetur@gravidasagittisduis.ca','dolor','Wyoming', 'ND', true,13,14,15,16,13,14,15,16);
+  ('Auto','mus. Proin vel arcu','https://www.freeimages.com/photo/tractor-3-1386656',1),
+  ('Yard','et malesuada','https://www.freeimages.com/photo/tractor-3-1386656',2),
+  ('Auto','ipsum dolor sit amet, consectetuer','https://www.freeimages.com/photo/tractor-3-1386656',3);
 
 
 INSERT INTO chat (user_id_1,user_id_2)
