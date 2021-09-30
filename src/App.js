@@ -9,18 +9,21 @@ import Trading from "./components/trading/Trading";
 import Chat from "./components/chat/Chat";
 
 function App() {
-  return (
-    
+
+  const [userId, setUserId] = useState(0); 
+
+  handleUserId = (userId) => {
+    setUserId(userId)
+  }
+
+  return (  
     <Router>
-    
       <div className="App">
         <Navbar />
         <div className="content">
           //App components - react-router-dom
           <Switch>
-          <Route path="/login">
-              <Login />
-            </Route>
+          <Route path="/login" render={(props) => (<Login {...props} handleUserId={handleUserId}/>)}  />
           <Route path="/register">
               <Register />
             </Route>

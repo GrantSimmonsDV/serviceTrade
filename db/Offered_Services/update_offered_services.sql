@@ -1,4 +1,4 @@
-UPDATE users
+UPDATE offered_service
 SET
 service_category = $2, 
 service_define = $3, 

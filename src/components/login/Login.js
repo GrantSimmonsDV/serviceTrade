@@ -8,12 +8,12 @@
 import React from "react";
 import axios from "axios";
 
-export default function Login() {
+export default function Login(props) {
   
   axios.post("/login")
 //   ,{ email, password }
 .then((res) => {
-   
+   props.handleUserId(res.data.user_id)
 })
 
   

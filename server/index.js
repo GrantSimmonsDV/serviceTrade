@@ -26,8 +26,14 @@ app.get("/chat", siteHandling.getChatHist);
 app.get("/chat/:chat_id", siteHandling.getMessages)
 //Navbar
 //Profile
-app.post("/profile/:user_id", siteHandling.offeredServices);
-app.post("/profile/:id", siteHandling.neededServices);
+app.post("/profile/offered/:user_id", siteHandling.offeredServices);
+app.post("/profile/needed/:user_id", siteHandling.neededServices);
+
+app.put("/profile/offered/update/:id", siteHandling.updateOfferedServices);
+app.put("/profile/needed/update/:id", siteHandling.updateNeededServices);
+
+app.delete("/profile/offered/delete/:id", siteHandling.deleteOfferedServices);
+app.delete("/profile/needed/delete/:id", siteHandling.deleteNeededServices);
 
 app.put("/profile/:id", siteHandling.updateProfile);
 app.delete("/profile/:id", siteHandling.deleteProfile);
