@@ -15,7 +15,7 @@ function App() {
   handleUserId = (userId) => {
     setUserId(userId)
   }
-
+console.log(userId)
   return (  
     <Router>
       <div className="App">
