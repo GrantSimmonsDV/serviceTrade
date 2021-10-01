@@ -1,2 +1,2 @@
 INSERT INTO messages (message_text)
-values ($1);
+VALUES ($1);

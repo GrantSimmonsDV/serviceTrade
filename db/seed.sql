@@ -1,6 +1,8 @@
 -- drop all tables
 DROP TABLE IF EXISTS "users", "chat", "messages", "offered_service", "needed_service";
 
+
+-- create all tables
 CREATE TABLE "users" (
   id SERIAL PRIMARY KEY,
   full_name varchar(255) default NULL,
@@ -42,6 +44,8 @@ CREATE TABLE "needed_service" (
   service_image TEXT default NULL
 );
 
+
+-- alter tables
 ALTER TABLE offered_service ADD FOREIGN KEY (user_id) REFERENCES users(id);
 ALTER TABLE needed_service ADD FOREIGN KEY (user_id) REFERENCES users(id);
 
@@ -51,7 +55,8 @@ ALTER TABLE chat ADD FOREIGN KEY (user_id_2) REFERENCES users(id);
 ALTER TABLE messages ADD FOREIGN KEY (user_id) REFERENCES users(id);
 ALTER TABLE messages ADD FOREIGN KEY (chat_id) REFERENCES chat(id);
 
-
+-- insert tables will add dummy data to db. Can use data generator that spits out postgres db data for you based on criteria
+-- insert into tables 
 INSERT INTO users (full_name,email,password, profile_pic, city, state, flexible_trade)
 VALUES
   ('Hu Moreno','malesuada.id@disparturient.net','imperdiet','https://www.freeimages.com/photo/tractor-3-1386656','Dallas', 'TX', true),
@@ -86,15 +91,3 @@ VALUES
   ('viverra. Maecenas iaculis aliquet diam. Sed diam lorem, auctor quis,',2,2),
   ('vestibulum. Mauris magna. Duis dignissim tempor arcu. Vestibulum ut eros',4,1),
   ('in magna. Phasellus dolor elit, pellentesque a, facilisis non, bibendum',2,3);
-
-
-
-
--- create all tables
-
--- alter tables
-
--- insert into tables 
-
-
--- this will add dummy data to // need data generator that spits out postgres db data 

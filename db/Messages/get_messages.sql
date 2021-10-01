@@ -1,2 +1,2 @@
-SELECT message_text from messages
-where chat_id = $1;
+SELECT message_text FROM messages
+WHERE chat_id = $1;

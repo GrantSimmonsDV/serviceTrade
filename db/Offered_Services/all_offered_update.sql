@@ -1,2 +1,2 @@
-Select * from offered_service
-where id = $1;
+SELECT * FROM offered_service
+WHERE id = $1;
