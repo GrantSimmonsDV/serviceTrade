@@ -27,6 +27,22 @@ module.exports = {
 
   //********* PROFILE **********
 
+  updateProfile: async (req, res) => {
+    const db = req.app.get("db");
+    const { id } = req.params;
+    const { full_name, profile_pic, city, state } = req.body;
+    const updateId = await db.Users.update_profile_by_id([
+      id,
+      full_name,
+      profile_pic,
+      city,
+      state,
+    ]);
+    //Error handling if any fields are blank for fullname or city and at least one offered service. If no needed services then flexible trade needs to be marked.
+
+    res.status(200).send(updateId);
+  },
+
   offeredServices: async (req, res) => {
     const db = req.app.get("db");
     const { user_id } = req.params;
@@ -133,21 +149,6 @@ module.exports = {
     res.status(200).send("Item has been deleted");
   },
 
-  updateProfile: async (req, res) => {
-    const db = req.app.get("db");
-    const { id } = req.params;
-    const { full_name, profile_pic, city, state } = req.body;
-    const updateId = await db.Users.update_profile_by_id([
-      id,
-      full_name,
-      profile_pic,
-      city,
-      state,
-    ]);
-    //Error handling if any fields are blank for fullname or city and at least one offered service. If no needed services then flexible trade needs to be marked.
-
-    res.status(200).send(updateId);
-  },
 
   deleteProfile: async (req, res) => {
     const db = req.app.get("db");

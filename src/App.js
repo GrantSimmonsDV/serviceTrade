@@ -1,45 +1,47 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { useState } from "react";
 
 import Register from "./components/register/Register";
 import Login from "./components/login/Login";
 import Navbar from "./components/navbar/Navbar";
-import Profile from "./components/profile/Profile";
 import Trading from "./components/trading/Trading";
 import Chat from "./components/chat/Chat";
+import Profile from "./components/profile/Profile";
 
 function App() {
+  const [userId, setUserId] = useState(null);
 
-  const [userId, setUserId] = useState(0); 
+  const handleUserId = (userId) => {
+    setUserId(userId);
+  };
 
-  handleUserId = (userId) => {
-    setUserId(userId)
-  }
-console.log(userId)
-  return (  
+
+  return (
     <Router>
       <div className="App">
-        <Navbar />
+        <Navbar userId={userId} handleUserId={handleUserId} />
         <div className="content">
-          //App components - react-router-dom
           <Switch>
-          <Route path="/login" render={(props) => (<Login {...props} handleUserId={handleUserId}/>)}  />
-          <Route path="/register">
-              <Register />
-            </Route>
-            <Route path="/profile">
-              <Profile />
-            </Route>
+            <Route
+              path="/login"
+              render={(props) => (
+                <Login {...props} handleUserId={handleUserId} />
+              )}
+            />
+            <Route path="/register" component={Register} />
             <Route path="/trading">
               <Trading />
             </Route>
             <Route path="/chat">
               <Chat />
             </Route>
+            <Route path="/profile">
+              <Profile />
+            </Route>
           </Switch>
         </div>
       </div>
-    
     </Router>
   );
 }

@@ -5,21 +5,50 @@
 // Can click Log In button
 // POST request to login  (actually POST request)
 
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 export default function Login(props) {
-  
-  axios.post("/login")
-//   ,{ email, password }
-.then((res) => {
-   props.handleUserId(res.data.user_id)
-})
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  
+  const handleClick = (e) => {
+    e.preventDefault();
+    axios.post("/login", { email, password }).then((res) => {
+      props.handleUserId(res.data.id);
+      props.history.push("/trading");
+      alert(`Welcome, ${res.data.full_name}`);
+    });
+    // //used for 404 errors, or network errors
+    // .catch((error) => {
+    //   console.log(error)
+    // })
+  };
+
   return (
     <div className="login">
       <h2>Login comp</h2>
+      <form action="" className="register_fields">
+        <input
+          type="text"
+          name="email"
+          id="email"
+          placeholder="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </form>
+      <button onClick={handleClick} className="login_button">
+        Login
+      </button>
     </div>
   );
 }

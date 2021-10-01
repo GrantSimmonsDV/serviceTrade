@@ -9,7 +9,7 @@ module.exports = {
 
     //Error handling goes here if adding.
 
-    res.status(200).send("Successfully signed in");
+    res.status(200).send("Successfully registered");
   },
 
 
@@ -26,10 +26,10 @@ module.exports = {
       if (userData.password === password) {
         res.status(200).send(userData);
       } else {
-        return res.status(404).send("Email or password is incorrect");
+        return res.status(200).send("Email or password is incorrect");
       }
     } else {
-      res.status(404).send("Email or password is incorrect");
+      res.status(200).send("Email or password is incorrect");
     }
   },
 
