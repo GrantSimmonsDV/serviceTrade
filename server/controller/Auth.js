@@ -4,7 +4,7 @@ module.exports = {
         const db = req.app.get("db")
         const {email, password } = req.body;
        
-        await db.new_account([email, password])
+        await db.Users.new_account([email, password])
   
         //Error handling goes here if adding.
   
@@ -18,7 +18,7 @@ module.exports = {
     //keys called email and password from frontend
     const { email, password } = req.body;
     //verify email is in db
-    const [userData] = await db.get_user_by_email([email]);
+    const [userData] = await db.Users.get_user_by_email([email]);
     
 
     //verify password goes with specific email in db

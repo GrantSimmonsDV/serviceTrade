@@ -3,7 +3,7 @@ module.exports = {
   createMsg: async (req, res) => {
     const db = req.app.get("db");
     const { message_text } = req.body;
-    await db.Chat.create_msg([message_text]);
+    await db.Messages.create_msg([message_text]);
 
     res.status(200).send("Welcome");
   },
@@ -19,7 +19,7 @@ module.exports = {
   getMessages: async (req, res) => {
     const db = req.app.get("db");
     const { chat_id } = req.params;
-    const getMsg = await db.Chat.get_messages([chat_id]);
+    const getMsg = await db.Messages.get_messages([chat_id]);
 
     res.status(200).send(getMsg);
   },
@@ -91,7 +91,7 @@ module.exports = {
     await db.Offered_Services.update_offered_services([id, service_category, service_define, service_image]);
 
       //   If i need to i can grab all of them, make a query here
-      const allOfferedUpdate = await db.all_offered_update([id]);
+      const allOfferedUpdate = await db.Offered_Services.all_offered_update([id]);
       return res.status(200).send(allOfferedUpdate);
   
   },
@@ -132,7 +132,7 @@ module.exports = {
     const { id } = req.params;
     const { full_name, profile_pic, city, state } = req.body;
 
-    const updateId = await db.Profile.update_profile_by_id([
+    const updateId = await db.Users.update_profile_by_id([
       id,
       full_name,
       profile_pic,
@@ -150,7 +150,7 @@ module.exports = {
 
     const { id } = req.params;
 
-    await db.Profile.delete_profile([id]);
+    await db.Users.delete_profile([id]);
     // console.log(deleteId)
     res.status(200).send("Item has been deleted");
   },
