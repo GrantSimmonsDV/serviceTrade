@@ -15,26 +15,69 @@
 // User can update profile and click Save Changes
 //PUT request to update profile data
 
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
+import "./Profile.css";
 
 export default function Profile() {
+  const [fullName, setFullName] = useState("");
+  const [profilePic, setProfilePic] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
 
-//create user's profile data in db
-axios.post("/profile")
-.then((res) => {
 
-})
+  const handleClick = (e) => {
+  //update profile data
+  axios
+    .put("/profile/:id", { fullName, profilePic, city, state })
+    .then((res) => {
+      
+    });
+  };
 
-//update profile data
-axios.put("/profile/:id")
-.then((res) => {
 
-})
 
   return (
     <div className="profile">
       <h2>Profile comp</h2>
+      <label>
+        Full Name
+        <input
+          type="text"
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
+        />
+      </label>
+
+      <label id="uploadBtn">
+        Choose Photo
+        <img src="profile-silhouette.jpeg" id="photo" />
+        <input
+          type="file"
+          id="file"
+          alt="Profile Picture"
+          src={profilePic}
+          onChange={(e) => setProfilePic(e.target.value)}
+        />
+      </label>
+
+      <label>
+        City
+        <input
+          type="text"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+        />
+      </label>
+      <label>
+        State
+        <input
+          type="text"
+          value={state}
+          onChange={(e) => setState(e.target.value)}
+        />
+      </label>
+      <button onClick={handleClick} className="save_profileBtn">Save Profile</button>
     </div>
   );
 }
