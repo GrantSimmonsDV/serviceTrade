@@ -16,7 +16,7 @@ function Navbar(props) {
     axios.delete("/logout") 
     .then((res) => {
         props.handleUserId(null);
-        console.log(window)
+        alert(res.data)
         window.location.pathname="/login";
     })
     // //used for 404 errors, or network errors
@@ -41,7 +41,6 @@ function Navbar(props) {
         <Link to="/trading">Trading</Link>
         <Link to="/chat">Chat</Link>
         <Link to="/profile">Profile</Link>
-        {/* <Link to="/logout">Logout</Link> */}
         <button onClick={handleClick} className="logout_button">
         Logout
       </button>
