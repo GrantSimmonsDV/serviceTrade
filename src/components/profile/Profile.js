@@ -20,8 +20,8 @@ import axios from "axios";
 import "./Profile.css";
 
 export default function Profile(props) {
-  const [fullName, setFullName] = useState("");
-  const [profilePic, setProfilePic] = useState("");
+  const [full_name, setFull_Name] = useState("");
+  const [profile_pic, setProfile_Pic] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [service_category, setService_Category] = useState("");
@@ -38,9 +38,9 @@ export default function Profile(props) {
   const handleClick = (e) => {
     //update profile data
     axios
-      .put("/profile/:id", { fullName, profilePic, city, state })
+      .put(`/profile/${props.userId}`, { full_name, profile_pic, city, state })
       .then((res) => {
-        props.handleUserId(res.data.id);
+        alert("Profile saved")
         //Once saved turning the input into texts on their profile
       });
   };
@@ -53,15 +53,22 @@ export default function Profile(props) {
         service_image,
       })
       .then((res) => {
-        console.log(res.data)
-        alert("Services added");
+        alert("Offered service added");
         //Once saved a list of those offered services appear as a list on their profile.
       });
   };
   const intialNeededSrv = () => {
-    axios.post("/profile/needed/:user_id", {}).then((res) => {
-      //Once saved a list of those needed services appear as a list on their profile.
-    });
+    axios
+      .post(`/profile/needed/${props.userId}`, {
+        service_category,
+        service_define,
+        service_image,
+      })
+      .then((res) => {
+        console.log(res.data);
+        alert("Need service added");
+        //Once saved a list of those needed services appear as a list on their profile.
+      });
   };
 
   //*********** UPDATE
@@ -103,8 +110,8 @@ export default function Profile(props) {
           type="file"
           id="file"
           alt="Profile Picture"
-          src={profilePic}
-          onChange={(e) => setProfilePic(e.target.value)}
+          src={profile_pic}
+          onChange={(e) => setProfile_Pic(e.target.value)}
         />
       </label>
 
@@ -112,8 +119,8 @@ export default function Profile(props) {
         Full Name
         <input
           type="text"
-          value={fullName}
-          onChange={(e) => setFullName(e.target.value)}
+          value={full_name}
+          onChange={(e) => setFull_Name(e.target.value)}
         />
       </label>
 
@@ -158,29 +165,28 @@ export default function Profile(props) {
         Save
       </button>
 
-      <form action="">
+      
         <h2>Needed Services</h2>
+        <select id="needSelect" onChange={(e) => handleSelect(e)}>
+          <option disabled selected>
+            --Select One--
+          </option>
+          <option value="yard">Yard</option>
+          <option value="ed">Ed</option>
+          <option value="auto">Auto</option>
+          <option value="pets">Pet</option>
+          <option value="goods">Goods</option>
+          <option value="home">Home</option>
+        </select>
+
+        <label>Define Service</label>
+        <input type="text" onChange={defineService} />
+
         <button onClick={intialNeededSrv} className="save_neededBtn">
           Save
         </button>
-      </form>
-    
-      {/* 
-    const limitOffered = document.forms[0][0]
+      
 
-  let limit = 0;
-
-    limitOffered.map(() => {
-      limit++;
-      if(limit < 3){
-
-      } else{
-        return alert ("Limit of 3")
-      }
-    })
-
-    if (limit <
-   */}
 
       <br />
       <button onClick={deleteAccount} className="delete_accountBtn">
@@ -191,3 +197,20 @@ export default function Profile(props) {
 }
 
 // (document.querySelector("#offerSelect").options)
+
+{/* 
+const limitOffered = document.forms[0][0]
+
+let limit = 0;
+
+limitOffered.map(() => {
+limit++;
+if(limit < 3){
+
+} else{
+  return alert ("Limit of 3")
+}
+})
+
+if (limit <
+*/}

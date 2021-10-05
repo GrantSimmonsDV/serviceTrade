@@ -76,7 +76,7 @@ module.exports = {
     const db = req.app.get("db");
     const { user_id } = req.params;
     const { service_category, service_define, service_image } = req.body;
-    const neededLimit = await db.limits.Needed_Services.needed_limit([user_id]);
+    const neededLimit = await db.Needed_Services.needed_limit([user_id]);
 
     let limit = 0;
 
@@ -113,7 +113,7 @@ module.exports = {
     ]);
     //May not need v v v v
     const allOfferedUpdate = await db.Offered_Services.all_offered_update([id]);
-    // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ 
+    // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
     return res.status(200).send(allOfferedUpdate);
   },
 
@@ -129,7 +129,7 @@ module.exports = {
     ]);
     //May not need v v v v
     const allNeededUpdate = await db.Needed_Services.all_needed_update([id]);
-    // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ 
+    // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
     return res.status(200).send(allNeededUpdate);
   },
 
@@ -148,7 +148,6 @@ module.exports = {
 
     res.status(200).send("Item has been deleted");
   },
-
 
   deleteProfile: async (req, res) => {
     const db = req.app.get("db");

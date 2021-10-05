@@ -9,7 +9,7 @@ module.exports = {
 
     //Error handling goes here if adding.
 
-    res.status(200).send("Successfully registered");
+    res.status(200).send("Successfully registered, now login");
   },
 
 

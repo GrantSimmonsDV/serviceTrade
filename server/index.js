@@ -6,7 +6,7 @@ require('dotenv').config();
 const { CONNECTION_STRING, SERVER_PORT } = process.env;
 
 //Create an express app
-const app = express();
+const app = express(); 
 
 app.use(express.json());
 
@@ -25,7 +25,7 @@ app.get("/chat", siteHandling.getChatHist);
 app.get("/chat/:chat_id", siteHandling.getMessages)
 
 //Profile
-app.get("/profile/offered/:user_id", site)
+app.get("/profile/offered/:user_id")
 app.get("/profile/needed/:user_id")
 
 app.post("/profile/offered/:user_id", siteHandling.offeredServices);
