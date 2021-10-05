@@ -16,7 +16,6 @@ function App() {
     setUserId(userId);
   };
 
-
   return (
     <Router>
       <div className="App">
@@ -36,9 +35,12 @@ function App() {
             <Route path="/chat">
               <Chat />
             </Route>
-            <Route path="/profile">
-              <Profile />
-            </Route>
+            <Route
+              path="/profile"
+              render={(props) => (
+              <Profile {...props} userId={userId} />
+              )}
+            />
           </Switch>
         </div>
       </div>

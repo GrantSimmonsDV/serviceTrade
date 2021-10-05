@@ -25,6 +25,9 @@ app.get("/chat", siteHandling.getChatHist);
 app.get("/chat/:chat_id", siteHandling.getMessages)
 
 //Profile
+app.get("/profile/offered/:user_id", site)
+app.get("/profile/needed/:user_id")
+
 app.post("/profile/offered/:user_id", siteHandling.offeredServices);
 app.post("/profile/needed/:user_id", siteHandling.neededServices);
 

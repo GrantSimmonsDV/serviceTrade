@@ -19,38 +19,85 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Profile.css";
 
-export default function Profile() {
+export default function Profile(props) {
   const [fullName, setFullName] = useState("");
   const [profilePic, setProfilePic] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
+  const [service_category, setService_Category] = useState("");
+  const [service_define, setService_Define] = useState("");
+  const [service_image, setService_Image] = useState(20);
 
+  const handleSelect = (e) => {
+    const output = e.target[e.target.selectedIndex].value;
+    setService_Category(output);
+  };
+
+  const defineService = (e) => setService_Define(e.target.value);
 
   const handleClick = (e) => {
-  //update profile data
-  axios
-    .put("/profile/:id", { fullName, profilePic, city, state })
-    .then((res) => {
-      
+    //update profile data
+    axios
+      .put("/profile/:id", { fullName, profilePic, city, state })
+      .then((res) => {
+        props.handleUserId(res.data.id);
+        //Once saved turning the input into texts on their profile
+      });
+  };
+  //*********** CREATE
+  const intialOfferedSrv = () => {
+    axios
+      .post(`/profile/offered/${props.userId}`, {
+        service_category,
+        service_define,
+        service_image,
+      })
+      .then((res) => {
+        console.log(res.data)
+        alert("Services added");
+        //Once saved a list of those offered services appear as a list on their profile.
+      });
+  };
+  const intialNeededSrv = () => {
+    axios.post("/profile/needed/:user_id", {}).then((res) => {
+      //Once saved a list of those needed services appear as a list on their profile.
     });
   };
 
+  //*********** UPDATE
+  const updateOfferedSrv = () => {
+    axios.put("/profile/offered/update/:user_id", {}).then((res) => {
+      //Once saved a list of those needed services appear as a list on their profile.
+    });
+  };
+  const updateNeededSrv = () => {
+    axios.put("/profile/needed/update/:user_id", {}).then((res) => {
+      //Once saved a list of those needed services appear as a list on their profile.
+    });
+  };
 
+  //*********** DELETE
+  const deleteOfferedSrv = () => {
+    axios.delete("/profile/offered/delete/:user_id", {}).then((res) => {
+      //Once saved a list of those needed services appear as a list on their profile.
+    });
+  };
+  const deleteNeededSrv = () => {
+    axios.delete("/profile/needed/delete/:user_id", {}).then((res) => {
+      //Once saved a list of those needed services appear as a list on their profile.
+    });
+  };
+
+  //*********** DELETE ACCOUNT
+  const deleteAccount = () => {
+    axios.delete("/profile/:id").then((res) => {});
+  };
 
   return (
     <div className="profile">
       <h2>Profile comp</h2>
-      <label>
-        Full Name
-        <input
-          type="text"
-          value={fullName}
-          onChange={(e) => setFullName(e.target.value)}
-        />
-      </label>
 
       <label id="uploadBtn">
-        Choose Photo
         <img src="profile-silhouette.jpeg" id="photo" />
         <input
           type="file"
@@ -58,6 +105,15 @@ export default function Profile() {
           alt="Profile Picture"
           src={profilePic}
           onChange={(e) => setProfilePic(e.target.value)}
+        />
+      </label>
+
+      <label>
+        Full Name
+        <input
+          type="text"
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
         />
       </label>
 
@@ -77,7 +133,61 @@ export default function Profile() {
           onChange={(e) => setState(e.target.value)}
         />
       </label>
-      <button onClick={handleClick} className="save_profileBtn">Save Profile</button>
+      <button onClick={handleClick} className="save_profileBtn">
+        Save Profile
+      </button>
+      <h2>Offered Services</h2>
+      {/* Needing to add this as a seperate component */}
+
+      <select id="offerSelect" onChange={(e) => handleSelect(e)}>
+        <option disabled selected>
+          --Select One--
+        </option>
+        <option value="yard">Yard</option>
+        <option value="ed">Ed</option>
+        <option value="auto">Auto</option>
+        <option value="pets">Pet</option>
+        <option value="goods">Goods</option>
+        <option value="home">Home</option>
+      </select>
+
+      <label>Define Service</label>
+      <input type="text" onChange={defineService} />
+
+      <button onClick={intialOfferedSrv} className="save_offeredBtn">
+        Save
+      </button>
+
+      <form action="">
+        <h2>Needed Services</h2>
+        <button onClick={intialNeededSrv} className="save_neededBtn">
+          Save
+        </button>
+      </form>
+    
+      {/* 
+    const limitOffered = document.forms[0][0]
+
+  let limit = 0;
+
+    limitOffered.map(() => {
+      limit++;
+      if(limit < 3){
+
+      } else{
+        return alert ("Limit of 3")
+      }
+    })
+
+    if (limit <
+   */}
+
+      <br />
+      <button onClick={deleteAccount} className="delete_accountBtn">
+        Delete Account
+      </button>
     </div>
   );
 }
+
+// (document.querySelector("#offerSelect").options)
