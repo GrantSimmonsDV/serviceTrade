@@ -1,27 +1,32 @@
-//Trading
-//Display service matches to other users
-//(match cards display stock image of the selected offered service category and user profile pic, etc. )
-// Access to Navbar
-//Router Links #23
-// Can review Full and Half matches and click on users card to chat with them to set up a service trade.
-//POST request to create/begin chat with other user of the match
-
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Card from "./Card";
+import "./Trading.css";
 
-export default function Trading() {
+export default function Trading(props) {
+  const [offeredCard, setOfferedCard] = useState([]);
 
-//create/begin chat with other user of the match
-axios.post("/trading")
-.then((res) => {
-
-})
-
+  
+  useEffect(() => {
+    axios.get("/trading/offered").then((res) => {
+      setOfferedCard(res.data);
+    });
+  }, []);
 
   return (
     <div className="trading">
       <h2>Trading comp</h2>
-      
+
+      {offeredCard.map((obj) => (
+        <Card
+        key={obj.id}
+        service_category={obj.service_category}
+        service_define={obj.service_define}
+        service_image={obj.service_image}
+        user_id={obj.user_id}
+        userId={props.userId}
+        />
+      ))}
     </div>
   );
 }

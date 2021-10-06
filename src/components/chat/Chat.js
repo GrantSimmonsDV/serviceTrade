@@ -12,25 +12,62 @@
 // Delete a message ??MVP (maybe not) *****************
 //DELETE request to remove message
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import ChatList from "./ChatList";
 
-export default function Chat() {
+export default function Chat(props) {
+  const [message_text, setMessage_Text] = useState("");
+  const [openChats, setOpenChats] = useState([]);
+
   // User is able to type in a message
   // Click send
-  axios.get("/chat/:id").then((res) => {
-
-  });
+  // axios.get("/chat/:id").then((res) => {});
 
   //to create message
-  axios.post("/chat")
-  .then((res) => {
-    
-  });
+  const handleClickMsg = () => {
+    axios.post("/chat", { message_text }).then((res) => {
+      setMessage_Text(res.data);
+    });
+  };
+
+  useEffect(() => {
+    function getChats() {
+      axios
+        .get("/chat", {
+          user_id_1: props.userId,
+        })
+        .then((res) => {
+          setOpenChats(res.data);
+        });
+    }
+    return () => {
+      getChats();
+    };
+  }, [props.userId]);
 
   return (
     <div className="chat">
       <h2>Chat comp</h2>
+
+      <h3>Chats</h3>
+      {openChats.map((obj) => (
+        <ChatList
+          key={obj.id}
+          user_id_1={obj.user_id_1}
+          user_id_2={obj.user_id_2}
+          userId={props.userId}
+        />
+      ))}
+
+      <h3>Chat with "user2"</h3>
+      <div className="current_chat">
+        <p>chat message</p>
+        <p>chat message</p>
+        <p>chat message</p>
+        <input type="text" />
+        <button onClick={handleClickMsg}>Send</button>
+      </div>
     </div>
   );
 }

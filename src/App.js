@@ -30,10 +30,10 @@ function App() {
             />
             <Route path="/register" component={Register} />
             <Route path="/trading">
-              <Trading />
+              <Trading userId={userId}/>
             </Route>
             <Route path="/chat">
-              <Chat />
+              <Chat userId={userId}/>
             </Route>
             <Route
               path="/profile"

@@ -25,6 +25,14 @@ module.exports = {
     res.status(200).send(getMsg);
   },
 
+  getChatUser: async (req, res) => {
+    const db = req.app.get("db");
+    const { user_id } = req.params;
+    const getUsername = await db.Chat.get_chat_username([user_id]);
+
+    res.status(200).send(getUsername);
+  },
+
   //********* PROFILE **********
 
   updateProfile: async (req, res) => {
@@ -43,21 +51,24 @@ module.exports = {
     res.status(200).send(updateId);
   },
 
-getOfferedServices: async (req, res) => {
-  const db = req.app.get("db");
-  const {user_id} = req.params;
-  const getOfferedServices = await db.Offered_Services.get_all_offered_services([user_id]);
+  getOfferedServices: async (req, res) => {
+    const db = req.app.get("db");
+    const { user_id } = req.params;
+    const getOfferedServices =
+      await db.Offered_Services.get_all_offered_services([user_id]);
 
-  res.status(200).send(getOfferedServices);
-},
+    res.status(200).send(getOfferedServices);
+  },
 
-getNeededServices: async (req, res) => {
-  const db = req.app.get("db");
-  const {user_id} = req.params;
-  const getNeededServices = await db.Needed_Services.get_all_needed_services([user_id]);
+  getNeededServices: async (req, res) => {
+    const db = req.app.get("db");
+    const { user_id } = req.params;
+    const getNeededServices = await db.Needed_Services.get_all_needed_services([
+      user_id,
+    ]);
 
-  res.status(200).send(getNeededServices)
-},
+    res.status(200).send(getNeededServices);
+  },
 
   offeredServices: async (req, res) => {
     const db = req.app.get("db");
@@ -175,9 +186,33 @@ getNeededServices: async (req, res) => {
 
   //********* TRADING **********
 
+  getAllServicesO: async (req, res) => {
+    const db = req.app.get("db");
+
+    const allServicesO = await db.Offered_Services.get_all_offered();
+
+    console.log(allServicesO);
+
+    res.status(200).send(allServicesO);
+  },
+
+  getAllServicesN: async (req, res) => {
+    const db = req.app.get("db");
+
+    const { user_id } = req.params;
+    const allServicesN = await db.Needed_Services.get_all_needed_services([
+      user_id,
+    ]);
+
+    console.log(allServicesN);
+
+    res.status(200).send(allServicesN);
+  },
+
   createChat: async (req, res) => {
     const db = req.app.get("db");
     const { user_id_1, user_id_2 } = req.body;
+    console.log(user_id_1, user_id_2);
     await db.Chat.create_chat([user_id_1, user_id_2]);
 
     res.status(200).send("New chat created");
