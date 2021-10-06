@@ -15,8 +15,10 @@
 // User can update profile and click Save Changes
 //PUT request to update profile data
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import ServicesO from "../services/ServicesO";
+import ServicesN from "../services/ServicesN";
 import "./Profile.css";
 
 export default function Profile(props) {
@@ -27,6 +29,8 @@ export default function Profile(props) {
   const [service_category, setService_Category] = useState("");
   const [service_define, setService_Define] = useState("");
   const [service_image, setService_Image] = useState(20);
+  const [offered, setOffered] = useState([]);
+  const [needed, setNeeded] = useState([]);
 
   const handleSelect = (e) => {
     const output = e.target[e.target.selectedIndex].value;
@@ -35,16 +39,40 @@ export default function Profile(props) {
 
   const defineService = (e) => setService_Define(e.target.value);
 
+  const handleOffered = async (e) => await setOffered(e);
+  const handleNeeded = async (e) => await setNeeded(e);
+
   const handleClick = (e) => {
     //update profile data
     axios
       .put(`/profile/${props.userId}`, { full_name, profile_pic, city, state })
       .then((res) => {
-        alert("Profile saved")
+        alert("Profile saved");
         //Once saved turning the input into texts on their profile
       });
   };
+
+  const handleGetO = () => {
+    axios.get(`/profile/offered/${props.userId}`).then((res) => {
+      setOffered(res.data);
+    });
+  };
+  const handleGetN = () => {
+    axios.get(`/profile/needed/${props.userId}`).then((res) => {
+      setNeeded(res.data);
+    });
+  };
+
+  useEffect(() => {
+    handleGetO();
+  }, []);
+
+  useEffect(() => {
+    handleGetN();
+  }, []);
+
   //*********** CREATE
+
   const intialOfferedSrv = () => {
     axios
       .post(`/profile/offered/${props.userId}`, {
@@ -53,11 +81,13 @@ export default function Profile(props) {
         service_image,
       })
       .then((res) => {
+        setOffered(res.data);
         alert("Offered service added");
         //Once saved a list of those offered services appear as a list on their profile.
       });
   };
-  const intialNeededSrv = () => {
+
+  const initialNeededSrv = () => {
     axios
       .post(`/profile/needed/${props.userId}`, {
         service_category,
@@ -65,34 +95,10 @@ export default function Profile(props) {
         service_image,
       })
       .then((res) => {
-        console.log(res.data);
+        setNeeded(res.data);
         alert("Need service added");
         //Once saved a list of those needed services appear as a list on their profile.
       });
-  };
-
-  //*********** UPDATE
-  const updateOfferedSrv = () => {
-    axios.put("/profile/offered/update/:user_id", {}).then((res) => {
-      //Once saved a list of those needed services appear as a list on their profile.
-    });
-  };
-  const updateNeededSrv = () => {
-    axios.put("/profile/needed/update/:user_id", {}).then((res) => {
-      //Once saved a list of those needed services appear as a list on their profile.
-    });
-  };
-
-  //*********** DELETE
-  const deleteOfferedSrv = () => {
-    axios.delete("/profile/offered/delete/:user_id", {}).then((res) => {
-      //Once saved a list of those needed services appear as a list on their profile.
-    });
-  };
-  const deleteNeededSrv = () => {
-    axios.delete("/profile/needed/delete/:user_id", {}).then((res) => {
-      //Once saved a list of those needed services appear as a list on their profile.
-    });
   };
 
   //*********** DELETE ACCOUNT
@@ -144,7 +150,24 @@ export default function Profile(props) {
         Save Profile
       </button>
       <h2>Offered Services</h2>
-      {/* Needing to add this as a seperate component */}
+
+      {console.log(offered)}
+
+      {offered.map((obj) => (
+        <ServicesO
+          key={obj.id}
+          id={obj.id}
+          user_id={obj.user_id}
+          service_category={obj.service_category}
+          service_define={obj.service_define}
+          service_image={obj.service_image}
+          handleOffered={handleOffered}
+          handleGetO={handleGetO}
+          handleSelect={handleSelect}
+        />
+      ))}
+
+      {/* ************OFFERED SERVICES */}
 
       <select id="offerSelect" onChange={(e) => handleSelect(e)}>
         <option disabled selected>
@@ -165,28 +188,42 @@ export default function Profile(props) {
         Save
       </button>
 
-      
-        <h2>Needed Services</h2>
-        <select id="needSelect" onChange={(e) => handleSelect(e)}>
-          <option disabled selected>
-            --Select One--
-          </option>
-          <option value="yard">Yard</option>
-          <option value="ed">Ed</option>
-          <option value="auto">Auto</option>
-          <option value="pets">Pet</option>
-          <option value="goods">Goods</option>
-          <option value="home">Home</option>
-        </select>
+      {/* ********NEEDED SERVICES */}
 
-        <label>Define Service</label>
-        <input type="text" onChange={defineService} />
+      <h2>Needed Services</h2>
 
-        <button onClick={intialNeededSrv} className="save_neededBtn">
-          Save
-        </button>
-      
+      {needed.map((obj) => (
+        <ServicesN
+          key={obj.id}
+          id={obj.id}
+          user_id={obj.user_id}
+          service_category={obj.service_category}
+          service_define={obj.service_define}
+          service_image={obj.service_image}
+          handleNeeded={handleNeeded}
+          handleGetN={handleGetN}
+          handleSelect={handleSelect}
+        />
+      ))}
 
+      <select id="needSelect" onChange={(e) => handleSelect(e)}>
+        <option disabled selected>
+          --Select One--
+        </option>
+        <option value="yard">Yard</option>
+        <option value="ed">Ed</option>
+        <option value="auto">Auto</option>
+        <option value="pets">Pet</option>
+        <option value="goods">Goods</option>
+        <option value="home">Home</option>
+      </select>
+
+      <label>Define Service</label>
+      <input type="text" onChange={defineService} />
+
+      <button onClick={initialNeededSrv} className="save_neededBtn">
+        Save
+      </button>
 
       <br />
       <button onClick={deleteAccount} className="delete_accountBtn">
@@ -197,20 +234,3 @@ export default function Profile(props) {
 }
 
 // (document.querySelector("#offerSelect").options)
-
-{/* 
-const limitOffered = document.forms[0][0]
-
-let limit = 0;
-
-limitOffered.map(() => {
-limit++;
-if(limit < 3){
-
-} else{
-  return alert ("Limit of 3")
-}
-})
-
-if (limit <
-*/}

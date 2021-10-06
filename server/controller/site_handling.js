@@ -43,6 +43,22 @@ module.exports = {
     res.status(200).send(updateId);
   },
 
+getOfferedServices: async (req, res) => {
+  const db = req.app.get("db");
+  const {user_id} = req.params;
+  const getOfferedServices = await db.Offered_Services.get_all_offered_services([user_id]);
+
+  res.status(200).send(getOfferedServices);
+},
+
+getNeededServices: async (req, res) => {
+  const db = req.app.get("db");
+  const {user_id} = req.params;
+  const getNeededServices = await db.Needed_Services.get_all_needed_services([user_id]);
+
+  res.status(200).send(getNeededServices)
+},
+
   offeredServices: async (req, res) => {
     const db = req.app.get("db");
     const { user_id } = req.params;
@@ -154,7 +170,7 @@ module.exports = {
     const { id } = req.params;
     await db.Users.delete_profile([id]);
 
-    res.status(200).send("Item has been deleted");
+    res.status(200).send("Account has been deleted");
   },
 
   //********* TRADING **********

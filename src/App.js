@@ -37,9 +37,7 @@ function App() {
             </Route>
             <Route
               path="/profile"
-              render={(props) => (
-              <Profile {...props} userId={userId} />
-              )}
+              render={(props) => <Profile {...props} userId={userId} />}
             />
           </Switch>
         </div>

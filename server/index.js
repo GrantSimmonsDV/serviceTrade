@@ -25,8 +25,8 @@ app.get("/chat", siteHandling.getChatHist);
 app.get("/chat/:chat_id", siteHandling.getMessages)
 
 //Profile
-app.get("/profile/offered/:user_id")
-app.get("/profile/needed/:user_id")
+app.get("/profile/offered/:user_id", siteHandling.getOfferedServices)
+app.get("/profile/needed/:user_id", siteHandling.getNeededServices )
 
 app.post("/profile/offered/:user_id", siteHandling.offeredServices);
 app.post("/profile/needed/:user_id", siteHandling.neededServices);
@@ -41,6 +41,7 @@ app.put("/profile/:id", siteHandling.updateProfile);
 app.delete("/profile/:id", siteHandling.deleteProfile);
 
 //Trading
+app.get()
 app.post("/trading", siteHandling.createChat);
 
 

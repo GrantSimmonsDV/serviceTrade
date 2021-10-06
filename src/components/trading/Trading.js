@@ -21,6 +21,7 @@ axios.post("/trading")
   return (
     <div className="trading">
       <h2>Trading comp</h2>
+      
     </div>
   );
 }
