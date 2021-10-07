@@ -7,6 +7,7 @@
 
 import React, { useState } from "react";
 import axios from "axios";
+import "./Login.css";
 
 export default function Login(props) {
   const [email, setEmail] = useState("");
@@ -27,28 +28,34 @@ export default function Login(props) {
 
   return (
     <div className="login">
-      <h2>Login comp</h2>
-      <form action="" className="register_fields">
-        <input
-          type="text"
-          name="email"
-          id="email"
-          placeholder="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </form>
-      <button onClick={handleClick} className="login_button">
-        Login
-      </button>
+      {/* <img src="serve_pic.png" alt="" /> */}
+      <div className="login_container">
+        <h2>Login</h2>
+        <form action="" className="login_fields">
+          {/* <div className="login_input"> */}
+          <input
+            type="text"
+            name="email"
+            id="email"
+            placeholder="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {/* </div> */}
+        </form>
+        <button onClick={handleClick} className="login_button">
+          Login
+        </button>
+      </div>
+        <p id="login_info">	&#169; Developed by Grant Simmons. Devmountain-Capstone</p>
     </div>
   );
 }

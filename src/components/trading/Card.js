@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./Trading.css";
 
 export default function Card(props) {
   const [allNeededByUser, setAllNeedByUser] = useState([]);
@@ -9,27 +10,28 @@ export default function Card(props) {
   useEffect(() => {
     function cardNeeded() {
       axios.get(`/trading/needed/${user_id}`).then((res) => {
-        console.log(res.data, "res.data info")
+        console.log(res.data, "res.data info");
         return setAllNeedByUser(res.data);
-      }); 
+      });
+    }
+    return () => {
+      cardNeeded();
     };
-   return () => {cardNeeded()};
   }, []);
 
-
   const createAChat = () => {
-    axios.post("/trading", {
-      user_id_1: props.userId,
-      user_id_2: props.user_id
-    }).then((res) => {
-    });
+    axios
+      .post("/trading", {
+        user_id_1: props.userId,
+        user_id_2: props.user_id,
+      })
+      .then((res) => {});
   };
 
-
-console.log(allNeededByUser, "array info")
+  console.log(allNeededByUser, "array info");
 
   return (
-    <div className="trading">
+    
       <div className="match_card">
         <h3>Offered</h3>
         <p>
@@ -43,6 +45,6 @@ console.log(allNeededByUser, "array info")
         ))}
         <button onClick={createAChat}>Chat</button>
       </div>
-    </div>
+  
   );
 }

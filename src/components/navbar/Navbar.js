@@ -9,26 +9,24 @@
 
 import { Link } from "react-router-dom";
 import axios from "axios";
+import "./Navbar.css";
 
 function Navbar(props) {
-
   const handleClick = () => {
-    axios.delete("/logout") 
-    .then((res) => {
-        props.handleUserId(null);
-        alert(res.data)
-        window.location.pathname="/login";
-    })
+    axios.delete("/logout").then((res) => {
+      props.handleUserId(null);
+      alert(res.data);
+      window.location.pathname = "/login";
+    });
     // //used for 404 errors, or network errors
-            // .catch((error) => {
-            //   console.log(error)
-            // })  
+    // .catch((error) => {
+    //   console.log(error)
+    // })
   };
 
-  
   return (
     <div className="navbar">
-      <h1>serviceTrade</h1>
+      <h1>serviceTrade &#10562;</h1>
       <div className="links">
         {!props.userId && (
           <>
@@ -38,13 +36,13 @@ function Navbar(props) {
         )}
         {props.userId && (
           <>
-        <Link to="/trading">Trading</Link>
-        <Link to="/chat">Chat</Link>
-        <Link to="/profile">Profile</Link>
-        <button onClick={handleClick} className="logout_button">
-        Logout
-      </button>
-        </>
+            <Link to="/trading">Trading</Link>
+            <Link to="/chat">Chat</Link>
+            <Link to="/profile">Profile</Link>
+            <button onClick={handleClick} className="logout_button">
+              Logout
+            </button>
+          </>
         )}
       </div>
     </div>

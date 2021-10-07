@@ -15,6 +15,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ChatList from "./ChatList";
+import "./Chat.css"
 
 export default function Chat(props) {
   const [message_text, setMessage_Text] = useState("");

@@ -1,5 +1,6 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import axios from "axios";
+import "./Register.css";
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -7,14 +8,15 @@ export default function Register() {
 
   const handleClick = () => {
     axios.post("/register", { email, password }).then((res) => {
-      console.log(res)
+      console.log(res);
       alert(res.data);
     });
   };
 
   return (
     <div className="register">
-      <h2>Register comp</h2>
+      <div className="register_container">
+      <h2>Register</h2>
       <form action="" className="register_fields">
         <input
           type="text"
@@ -36,6 +38,8 @@ export default function Register() {
       <button onClick={handleClick} className="register_button">
         Register
       </button>
+      </div>
+      <div id="register_info">	&#169; Developed by Grant Simmons. Devmountain-Capstone</div>
     </div>
   );
 }
