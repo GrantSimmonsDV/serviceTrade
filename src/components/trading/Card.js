@@ -35,7 +35,7 @@ export default function Card(props) {
       <div className="match_card">
         <h3>Offered</h3>
         <p>
-          {props.service_category}: {props.service_define}
+          {props.service_category}<span/>: {props.service_define}
         </p>
         <h3>Needed</h3>
         {allNeededByUser.map((obj) => (
@@ -43,7 +43,7 @@ export default function Card(props) {
             {obj.service_category}: {obj.service_define}
           </p>
         ))}
-        <button onClick={createAChat}>Chat</button>
+        <button className="chat_button" onClick={createAChat}>Chat</button>
       </div>
   
   );
