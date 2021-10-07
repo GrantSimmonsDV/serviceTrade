@@ -1,0 +1,63 @@
+.edit-button {
+    margin: 10px 10px;
+    padding: 9px 65px;
+    border-radius: 5px;
+    background-color: rgb(195, 198, 199);
+    font-size: 15px;
+    border: none;
+    color: white;
+    font-weight: bold;
+}
+.delete-button {
+    margin: 0px 10px;
+    padding: 3px 55px;
+    border-radius: 5px;
+    background-color: rgb(221, 169, 169);
+    font-size: 15px;
+    border: none;
+    color: white;
+    font-weight: bold;
+}
+
+label {
+    margin-top: 0;
+}
+
+input {
+    margin-top: 0px;
+}
+
+.ServicesO {
+    border: none;
+    margin-bottom: 20px;
+    background-color: rgb(152, 172, 180);
+    border-radius: 10px;
+    /* padding: 35px; */
+    width: 200px;
+    padding: 20px 0px;
+    /* margin-left: 10%; */
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+  }
+
+  .ServicesN {
+    border: none;
+    margin-left: px;
+    margin-bottom: 20px;
+    background-color: rgb(152, 172, 180);
+    border-radius: 10px;
+    /* padding: 35px; */
+    width: 200px;
+    padding: 20px 0px;
+    /* margin-left: 10%; */
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+  }
+
+  h4{
+      margin-bottom: 10px;
+      font-weight: normal;
+      font-style: italic;
+  }

@@ -49,7 +49,7 @@ export default function Chat(props) {
 
   return (
     <div className="chat">
-      <h2>Chat comp</h2>
+      <h2 className="title">Chat</h2>
 
       <h3>Chats</h3>
       {openChats.map((obj) => (
@@ -66,7 +66,7 @@ export default function Chat(props) {
         <p>chat message</p>
         <p>chat message</p>
         <p>chat message</p>
-        <input type="text" />
+        <input className="message_input" type="text" />
         <button onClick={handleClickMsg}>Send</button>
       </div>
     </div>

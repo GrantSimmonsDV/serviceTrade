@@ -14,7 +14,8 @@ export default function Trading(props) {
 
   return (
     <div className="trading">
-      <h2>Trading</h2>
+      <h2 className="title">Trading</h2>
+      <h3 className="subtitle">See what services others are willing to trade </h3>
       <div className="all_cards">
         {offeredCard.map((obj) => (
           <Card

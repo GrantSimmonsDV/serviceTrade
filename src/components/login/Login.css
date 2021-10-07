@@ -70,7 +70,14 @@ input {
   height: 100vh;
   background-color: hsl(124, 23%, 86%);
   padding-top: 75px;
+  /* background-image: url("https://neighbortoneighborvt.org/wp-content/uploads/2018/02/neighbor-to-neighbor-e1517855199651.png");
+ background-size: cover;
+ background-position: 50px 0, 0 25px; */
+ 
+  /* background-image: url("https://www.outreach.com/media/CMS/2020/Promo/neighbors/1.png"); */
+/* background-size: cover; */
 }
+
 
 
 /* img {

@@ -1,5 +1,29 @@
 .chats_list {
     list-style-type: none;
-
-
 }
+
+.title {
+    margin-bottom: 10px;
+    margin-top: 0px;
+    padding-top: 20px;
+    font-size: xx-large;
+  }
+
+  .message_input {
+      width: 600px;
+  }
+
+  button{
+    /* background-color: rgb(52, 124, 218); */
+    margin-top: 10px;
+  margin: 18px 0px;
+  padding: 8px 25px;
+  border-radius: 5px;
+  background-color: rgb(108, 156, 179);
+  font-size: 15px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  }
+
+  

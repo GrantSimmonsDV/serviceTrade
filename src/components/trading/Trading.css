@@ -31,11 +31,17 @@
   /* align-content: space-around; */
 }
 
-h2 {
-  margin-bottom: 25px;
+.title {
+  margin-bottom: 10px;
   margin-top: 0px;
   padding-top: 20px;
   font-size: xx-large;
+}
+
+.subtitle {
+font-weight: normal;
+font-style: italic;
+margin-bottom: 25px;
 }
 
 .trading {

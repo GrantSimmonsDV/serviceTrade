@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./Services.css";
 
 export default function ServicesO(props) {
   const [editO, setEditO] = useState(props.service_define);
@@ -9,7 +10,9 @@ export default function ServicesO(props) {
   const [service_define, setService_Define] = useState(props.service_define);
   const [service_image, setService_Image] = useState(props.service_image);
 
-  const [categoryOptionO, setCategoryOptionO] = useState(props.service_category)
+  const [categoryOptionO, setCategoryOptionO] = useState(
+    props.service_category
+  );
 
   //*********** UPDATE
   const updateOfferedSrv = () => {
@@ -32,10 +35,15 @@ export default function ServicesO(props) {
       //Once saved a list of those needed services appear as a list on their profile.
     });
   };
-
+ 
   return (
     <div className="ServicesO">
-      <select id="offerSelect" onChange={(e) => setCategoryOptionO(props.handleSelect(e)) } value={categoryOptionO}>
+      <h4>Saved offered service</h4>
+      <select
+        id="offeredSelect"
+        onChange={(e) => setCategoryOptionO(props.handleSelect(e))}
+        value={categoryOptionO}
+      >
         <option disabled selected>
           --Select One--
         </option>
@@ -47,15 +55,15 @@ export default function ServicesO(props) {
         <option value="home">Home</option>
       </select>
 
-      <label>Define Service</label>
+      {/* <label>Define Service</label> */}
       <input
         type="text"
         value={editO}
         onChange={(e) => setEditO(e.target.value)}
       />
 
-      <button onClick={updateOfferedSrv}>Edit</button>
-      <button onClick={deleteOfferedSrv}>Delete</button>
+      <button className="edit-button" onClick={updateOfferedSrv}>Edit</button>
+      <button className="delete-button" onClick={deleteOfferedSrv}>Delete</button>
     </div>
   );
 }

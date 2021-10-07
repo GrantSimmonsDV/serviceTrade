@@ -33,11 +33,11 @@ export default function Card(props) {
   return (
     
       <div className="match_card">
-        <h3>Offered</h3>
+        <h3>Offering</h3>
         <p>
           {props.service_category}<span/>: {props.service_define}
         </p>
-        <h3>Needed</h3>
+        <h3>Needing</h3>
         {allNeededByUser.map((obj) => (
           <p key={obj.id}>
             {obj.service_category}: {obj.service_define}

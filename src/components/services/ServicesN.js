@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./Services.css";
 
 export default function ServicesN(props) {
   const [editN, setEditN] = useState(props.service_define);
@@ -8,7 +9,9 @@ export default function ServicesN(props) {
   );
   const [service_define, setService_Define] = useState(props.service_define);
   const [service_image, setService_Image] = useState(props.service_image);
-  const [categoryOptionN, setCategoryOptionN] = useState(props.service_category)
+  const [categoryOptionN, setCategoryOptionN] = useState(
+    props.service_category
+  );
 
   const updateNeededSrv = () => {
     axios
@@ -35,7 +38,12 @@ export default function ServicesN(props) {
 
   return (
     <div className="ServicesN">
-      <select id="neededSelect" onChange={(e) => setCategoryOptionN(props.handleSelect(e)) } value={categoryOptionN}>
+      <h4>Saved needed service</h4>
+      <select
+        id="neededSelect"
+        onChange={(e) => setCategoryOptionN(props.handleSelect(e))}
+        value={categoryOptionN}
+      >
         <option disabled selected>
           --Select One--
         </option>
@@ -46,16 +54,16 @@ export default function ServicesN(props) {
         <option value="goods">Goods</option>
         <option value="home">Home</option>
       </select>
-
-      <label>Define Service</label>
+{/* 
+      <label>Define Service</label> */}
       <input
         type="text"
         value={editN}
         onChange={(e) => setEditN(e.target.value)}
       />
 
-      <button onClick={updateNeededSrv}>Edit</button>
-      <button onClick={deleteNeededSrv}>Delete</button>
+      <button className="edit-button" onClick={updateNeededSrv}>Edit</button>
+      <button  className="delete-button" onClick={deleteNeededSrv}>Delete</button>
     </div>
   );
 }
