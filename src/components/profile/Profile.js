@@ -110,120 +110,117 @@ export default function Profile(props) {
     <div className="profile">
       <h2 className="title">Profile</h2>
       <div className="site_orient">
-      <div className="profile_fields">
-        <img src="profile-silhouette.jpeg" id="photo" />
-        <input
-          type="file"
-          id="file"
-          alt="Profile Picture"
-          placeholder=""
-          src={profile_pic}
-          onChange={(e) => setProfile_Pic(e.target.value)}
-        />
-
-        <input
-          type="text"
-          placeholder="Full Name"
-          value={full_name}
-          onChange={(e) => setFull_Name(e.target.value)}
-        />
-
-        <input
-          type="text"
-          placeholder="City"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-        />
-
-        <input
-          type="text"
-          placeholder="State"
-          value={state}
-          onChange={(e) => setState(e.target.value)}
-        />
-
-        <button onClick={handleClick} className="save_profileBtn">
-          Save
-        </button>
-      </div>
-      <div className="services_O_N">
-        <h2>Offered Services</h2>
-        
-
-        {console.log(offered)}
-
-        {offered.map((obj) => (
-          <ServicesO
-            key={obj.id}
-            id={obj.id}
-            user_id={obj.user_id}
-            service_category={obj.service_category}
-            service_define={obj.service_define}
-            service_image={obj.service_image}
-            handleOffered={handleOffered}
-            handleGetO={handleGetO}
-            handleSelect={handleSelect}
+        <div className="profile_fields">
+          <img src="profile-silhouette.jpeg" id="photo" />
+          <input
+            type="file"
+            id="file"
+            alt="Profile Picture"
+            placeholder=""
+            src={profile_pic}
+            onChange={(e) => setProfile_Pic(e.target.value)}
           />
-        ))}
 
-        {/* ************OFFERED SERVICES */}
-<h4>Add an offered service</h4>
-        <select id="offerSelect" onChange={(e) => handleSelect(e)}>
-          <option disabled selected>
-            --Select Category--
-          </option>
-          <option value="yard">Yard</option>
-          <option value="ed">Ed</option>
-          <option value="auto">Auto</option>
-          <option value="pets">Pet</option>
-          <option value="goods">Goods</option>
-          <option value="home">Home</option>
-        </select>
-
-      
-        <input placeholder="Specifics" type="text" onChange={defineService} />
-
-        <button onClick={intialOfferedSrv} className="save_offeredBtn">
-          Save
-        </button>
-
-        {/* ********NEEDED SERVICES */}
-
-        <h2 className="need_title">Needed Services</h2>
-
-        {needed.map((obj) => (
-          <ServicesN
-            key={obj.id}
-            id={obj.id}
-            user_id={obj.user_id}
-            service_category={obj.service_category}
-            service_define={obj.service_define}
-            service_image={obj.service_image}
-            handleNeeded={handleNeeded}
-            handleGetN={handleGetN}
-            handleSelect={handleSelect}
+          <input
+            type="text"
+            placeholder="Full Name"
+            value={full_name}
+            onChange={(e) => setFull_Name(e.target.value)}
           />
-        ))}
-<h4>Add an needed service</h4>
-        <select id="needSelect" onChange={(e) => handleSelect(e)}>
-          <option disabled selected>
-            --Select Category--
-          </option>
-          <option value="yard">Yard</option>
-          <option value="ed">Ed</option>
-          <option value="auto">Auto</option>
-          <option value="pets">Pet</option>
-          <option value="goods">Goods</option>
-          <option value="home">Home</option>
-        </select>
 
-     
-        <input placeholder="Specifics" type="text" onChange={defineService} />
+          <input
+            type="text"
+            placeholder="City"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+          />
 
-        <button onClick={initialNeededSrv} className="save_neededBtn">
-          Save
-        </button>
-      </div>
+          <input
+            type="text"
+            placeholder="State"
+            value={state}
+            onChange={(e) => setState(e.target.value)}
+          />
+
+          <button onClick={handleClick} className="save_profileBtn">
+            Save
+          </button>
+        </div>
+        <div className="services_O_N">
+          <h2>Offered Services</h2>
+
+          {console.log(offered)}
+
+          {offered.map((obj) => (
+            <ServicesO
+              key={obj.id}
+              id={obj.id}
+              user_id={obj.user_id}
+              service_category={obj.service_category}
+              service_define={obj.service_define}
+              service_image={obj.service_image}
+              handleOffered={handleOffered}
+              handleGetO={handleGetO}
+              handleSelect={handleSelect}
+            />
+          ))}
+
+          {/* ************OFFERED SERVICES */}
+          <h4>Add an offered service</h4>
+          <select id="offerSelect" onChange={(e) => handleSelect(e)}>
+            <option disabled selected>
+              --Select Category--
+            </option>
+            <option value="Yard">Yard</option>
+            <option value="ed">Ed</option>
+            <option value="auto">Auto</option>
+            <option value="pets">Pet</option>
+            <option value="goods">Goods</option>
+            <option value="home">Home</option>
+          </select>
+
+          <input placeholder="Specifics" type="text" onChange={defineService} />
+
+          <button onClick={intialOfferedSrv} className="save_offeredBtn">
+            Save
+          </button>
+
+          {/* ********NEEDED SERVICES */}
+
+          <h2 className="need_title">Needed Services</h2>
+
+          {needed.map((obj) => (
+            <ServicesN
+              key={obj.id}
+              id={obj.id}
+              user_id={obj.user_id}
+              service_category={obj.service_category}
+              service_define={obj.service_define}
+              service_image={obj.service_image}
+              handleNeeded={handleNeeded}
+              handleGetN={handleGetN}
+              handleSelect={handleSelect}
+            />
+          ))}
+          <h4>Add an needed service</h4>
+          <select id="needSelect" onChange={(e) => handleSelect(e)}>
+            <option disabled selected>
+              --Select Category--
+            </option>
+            <option value="Yard">Yard</option>
+            <option value="ed">Ed</option>
+            <option value="auto">Auto</option>
+            <option value="pets">Pet</option>
+            <option value="goods">Goods</option>
+            <option value="Home">Home</option>
+          </select>
+
+          <input placeholder="Specifics" type="text" onChange={defineService} />
+
+          <button onClick={initialNeededSrv} className="save_neededBtn">
+            Save
+          </button>
+        </div>
       </div>
       <br />
       {/* <button onClick={deleteAccount} className="delete_accountBtn">

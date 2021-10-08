@@ -5,17 +5,32 @@ import "./Trading.css";
 
 export default function Trading(props) {
   const [offeredCard, setOfferedCard] = useState([]);
+  const [allNeeded, setAllNeeded] = useState([]);
 
   useEffect(() => {
-    axios.get("/trading/offered").then((res) => {
+      axios.get("/trading/needed")
+      .then((res) => {
+         return setAllNeeded(res.data);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios.get("/trading/offered")
+    .then((res) => {
       setOfferedCard(res.data);
     });
   }, []);
 
+
+console.log(allNeeded)
   return (
     <div className="trading">
       <h2 className="title">Trading</h2>
-      <h3 className="subtitle">See what services others are willing to trade </h3>
+      <h3 className="subtitle">
+        See what services others are willing to trade{" "}
+      </h3>
+
+
       <div className="all_cards">
         {offeredCard.map((obj) => (
           <Card
@@ -25,6 +40,7 @@ export default function Trading(props) {
             service_image={obj.service_image}
             user_id={obj.user_id}
             userId={props.userId}
+            allNeeded={allNeeded}
           />
         ))}
       </div>

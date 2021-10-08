@@ -26,4 +26,13 @@
   font-weight: bold;
   }
 
-  
+  .chat_subtitle {
+    font-style: italic;
+    font-weight: normal;
+  }
+
+  /* .chat {
+    background-color:hsl(124, 23%, 86%);
+    height: 100vh;
+  }
+   */

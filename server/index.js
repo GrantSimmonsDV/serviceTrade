@@ -43,7 +43,7 @@ app.delete("/profile/:id", siteHandling.deleteProfile);
 
 //Trading
 app.get("/trading/offered", siteHandling.getAllServicesO);
-app.get("/trading/needed/:user_id", siteHandling.getAllServicesN);
+app.get("/trading/needed", siteHandling.getAllServicesN);
 app.post("/trading", siteHandling.createChat);
 
 //********* Connecting to db with MASSIVE *********

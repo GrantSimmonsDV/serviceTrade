@@ -47,7 +47,7 @@ export default function ServicesO(props) {
         <option disabled selected>
           --Select One--
         </option>
-        <option value="yard">Yard</option>
+        <option value="Yard">Yard</option>
         <option value="ed">Ed</option>
         <option value="auto">Auto</option>
         <option value="pets">Pet</option>

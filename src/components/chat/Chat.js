@@ -51,7 +51,7 @@ export default function Chat(props) {
     <div className="chat">
       <h2 className="title">Chat</h2>
 
-      <h3>Chats</h3>
+      {/* <h3>Chats</h3> */}
       {openChats.map((obj) => (
         <ChatList
           key={obj.id}
@@ -61,11 +61,11 @@ export default function Chat(props) {
         />
       ))}
 
-      <h3>Chat with "user2"</h3>
+      <h3 className="chat_subtitle">Start chatting with Ryan Johnson</h3>
       <div className="current_chat">
+        {/* <p>chat message</p>
         <p>chat message</p>
-        <p>chat message</p>
-        <p>chat message</p>
+        <p>chat message</p> */}
         <input className="message_input" type="text" />
         <button onClick={handleClickMsg}>Send</button>
       </div>

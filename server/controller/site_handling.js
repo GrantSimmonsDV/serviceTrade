@@ -199,10 +199,8 @@ module.exports = {
   getAllServicesN: async (req, res) => {
     const db = req.app.get("db");
 
-    const { user_id } = req.params;
-    const allServicesN = await db.Needed_Services.get_all_needed_services([
-      user_id,
-    ]);
+   
+    const allServicesN = await db.Needed_Services.get_all_needed_services();
 
     console.log(allServicesN);
 

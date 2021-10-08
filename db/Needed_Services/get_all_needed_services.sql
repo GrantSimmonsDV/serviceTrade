@@ -1,2 +1,1 @@
-SELECT * FROM needed_service
-WHERE user_id = $1;
+SELECT * FROM needed_service;
