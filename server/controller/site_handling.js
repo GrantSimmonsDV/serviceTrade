@@ -67,7 +67,7 @@ module.exports = {
       user_id,
     ]);
 
-    res.status(200).send(getNeededServices);
+    res.status(200).send(getNeededServices); 
   },
 
   offeredServices: async (req, res) => {

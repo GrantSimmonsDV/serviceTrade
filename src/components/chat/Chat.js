@@ -25,13 +25,15 @@ export default function Chat(props) {
   // Click send
   // axios.get("/chat/:id").then((res) => {});
 
-  //to create message
+  //function to create message and taking message input, saving it to db and then ??sending it back to be saved on State. 
   const handleClickMsg = () => {
     axios.post("/chat", { message_text }).then((res) => {
       setMessage_Text(res.data);
     });
   };
 
+  // Fire this useEffect only when user id changes? make a call to get all chats with that user id and then save them to state in an array --?
+  //the return function to call getChats? --  
   useEffect(() => {
     function getChats() {
       axios
@@ -45,6 +47,7 @@ export default function Chat(props) {
     return () => {
       getChats();
     };
+    
   }, [props.userId]);
 
   return (
@@ -52,6 +55,9 @@ export default function Chat(props) {
       <h2 className="title">Chat</h2>
 
       {/* <h3>Chats</h3> */}
+
+      map over openChats on State, an array of objects of all the chats the particular user id is found in, and the other user's id on the chat. 
+      Pass this down to ChatList 
       {openChats.map((obj) => (
         <ChatList
           key={obj.id}
