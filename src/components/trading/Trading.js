@@ -36,10 +36,10 @@ return (
 
 
       <div className="all_cards">
-        {/* Map over the Card component to render all the Service Cards on the Trading page */}
-        {/* Pass down these values on ---props in obj since this data will be in an object */}
-        {/* Pass down userId on props again to Card that Trading got from the parent App.js that will help identify whose info on the card  */}
-        {/* Pass down allNeeded for --- */}
+        {/* Map over the offeredCard array on state, render the Card component and pass down the props for each iteration of an offered service in the array. This will create a Service Card for each offered service in the db to the Trading page */}
+        {/* Pass down these values as props desconstructed from the (obj) objects in the offeredCard array on state, other current props on this component, and the allNeeded array on state. */}
+        {/* Pass down userId on props again to Card that Trading got from the parent App.js that will help identify whose info is on the card  */}
+
         {offeredCard.map((obj) => (
           <Card
             key={obj.id}

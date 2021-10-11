@@ -7,7 +7,7 @@ export default function Card(props) {
   const [allNeeded, setAllNeeded] = useState(props.allNeeded);
   
 
-  // Function that creates a chat and --deconstructs both user ids invovles and send the user to the Chat page once they click the create chat button.
+  // Once they click the chat button this function creates a chat and takes the current user's user id (userId) and the user id associated with the service card (user_id) they clicked on and adds that to the db for that chat. Also as they click the chat button it sends the user to the Chat page. User ids are renamed with the colons to match the user id names on the backend (user_id_1, user_id_2)
   const createAChat = () => {
     axios
       .post("/trading", {
@@ -21,7 +21,7 @@ export default function Card(props) {
 
   console.log(props);
   
-  // Function takes the array of allNeeded on state and --iterates through each of the objects in that allNeeded array and evaluates the user id from the object being currently iterated over and the user id from ?? props ??. If those user ids match then save to state these two values off the current object of all needed services of that user with a spread opperator. 
+  // This function takes the array of allNeeded on state and iterates through each of the objects in that allNeeded array and evaluates the user id from the object being currently iterated over and the user id from props from the offeredCard. If those user ids match then save to state these two values (service_category and service_define) off the current object of all needed services of that user with a spread opperator. 
   // This function is called within a useEffect so it will be fired every time the -- component is rendered
   function saveNeeded() {
     allNeeded.forEach((obj) => {
