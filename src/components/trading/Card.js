@@ -46,12 +46,12 @@ export default function Card(props) {
   return (
     <div className="match_card">
       <h3>Offering</h3>
-      {/* -- This is displaying the service category and define of the user ?? */}
+      {/* This is displaying the offered service category and service define on props from the Trading component. */}
             <p>
         {props.service_category}: {props.service_define}
       </p>
       <h3>Needing</h3>
-      {/* This is mapping over saveAllNeeded that is an array of objects of the saved service categories and defines that were saved by the saveNeeded function above. Iterating through each object in the array display the category and define for each needed service of that ??user id */}
+      {/* This is mapping over saveAllNeeded that is an array of objects of the saved service categories and service defines that were saved by the saveNeeded function above. Iterating through each object in the array and display the category and define for each needed service of that user id currently on state */}
       {saveAllNeeded.map((obj) => (
       <p>{obj.service_category}: {obj.service_define}
       </p>

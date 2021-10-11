@@ -6,6 +6,8 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+
+//Function takes the email and password input from user to create an account in db. Display success message. 
   const handleClick = () => {
     axios.post("/register", { email, password }).then((res) => {
       console.log(res);

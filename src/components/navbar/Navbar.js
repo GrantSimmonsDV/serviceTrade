@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "./Navbar.css";
 
+//This function simply resets the user id to null with the passed down handleUserId function, alerts user with logout response message from the backend and takes the user back to the login page.
 function Navbar(props) {
   const handleClick = () => {
     axios.delete("/logout").then((res) => {
@@ -28,6 +29,8 @@ function Navbar(props) {
     <div className="navbar">
       <h1>serviceTrade &#10562;</h1>
       <div className="links">
+        
+        {/* This sets a condition that if the passed down user id is null then display the Login and Regsiter links in the navbar, or if the user id passed down has an id value then display the Trading, Chat, Profile, and Logout links in the navbar */}
         {!props.userId && (
           <>
             <Link to="/login">Login</Link>

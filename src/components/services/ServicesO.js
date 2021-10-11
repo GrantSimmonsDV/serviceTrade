@@ -15,6 +15,8 @@ export default function ServicesO(props) {
   );
 
   //*********** UPDATE
+
+  //Function updates needed service by its unique id. It then is saved to state by handleOffered function on the Profile component.
   const updateOfferedSrv = () => {
     axios
       .put(`/profile/offered/update/${props.id}`, {
@@ -25,22 +27,22 @@ export default function ServicesO(props) {
       .then((res) => {
         props.handleOffered(res.data);
         alert("Services updated");
-        //Once saved a list of those needed services appear as a list on their profile.
       });
   };
 
+  //Function deletes needed service by its unique id. It then is saved to state by handleGetO function on the Profile component.
   const deleteOfferedSrv = () => {
     axios.delete(`/profile/offered/delete/${props.id}`).then((res) => {
       props.handleGetO();
-      //Once saved a list of those needed services appear as a list on their profile.
     });
   };
- 
+
   return (
     <div className="ServicesO">
       <h4>Saved offered service</h4>
       <select
         id="offeredSelect"
+        // onChange takes the event updates state with handleSelect from Profile and then sets the value to be what is state now.
         onChange={(e) => setCategoryOptionO(props.handleSelect(e))}
         value={categoryOptionO}
       >
@@ -59,11 +61,16 @@ export default function ServicesO(props) {
       <input
         type="text"
         value={editO}
+        //onChange takes event and uses entered value to update state from what its been.
         onChange={(e) => setEditO(e.target.value)}
       />
 
-      <button className="edit-button" onClick={updateOfferedSrv}>Edit</button>
-      <button className="delete-button" onClick={deleteOfferedSrv}>Delete</button>
+      <button className="edit-button" onClick={updateOfferedSrv}>
+        Edit
+      </button>
+      <button className="delete-button" onClick={deleteOfferedSrv}>
+        Delete
+      </button>
     </div>
   );
 }

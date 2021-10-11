@@ -15,7 +15,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ChatList from "./ChatList";
-import "./Chat.css"
+import "./Chat.css";
 
 export default function Chat(props) {
   const [message_text, setMessage_Text] = useState("");
@@ -25,15 +25,15 @@ export default function Chat(props) {
   // Click send
   // axios.get("/chat/:id").then((res) => {});
 
-  //function to create message and taking message input, saving it to db and then ??sending it back to be saved on State. 
+  //function to create message, taking message input, saving it to db and then sending it back to be saved on State.
   const handleClickMsg = () => {
     axios.post("/chat", { message_text }).then((res) => {
       setMessage_Text(res.data);
     });
   };
 
-  // Fire this useEffect only when user id changes? make a call to get all chats with that user id and then save them to state in an array --?
-  //the return function to call getChats? --  
+  // Fire this useEffect only when user id (props.userId) changes. Make a call to get all chats involved with that user id and then save them to state in an array
+  //the return function to call getChats --
   useEffect(() => {
     function getChats() {
       axios
@@ -47,17 +47,13 @@ export default function Chat(props) {
     return () => {
       getChats();
     };
-    
   }, [props.userId]);
 
   return (
     <div className="chat">
       <h2 className="title">Chat</h2>
-
       {/* <h3>Chats</h3> */}
-
-      map over openChats on State, an array of objects of all the chats the particular user id is found in, and the other user's id on the chat. 
-      Pass this down to ChatList 
+      {/* Map over openChats on State, an array of objects of all the chats the particular user id is found in, and the other user's id on the chat. Pass this down to ChatList */}
       {openChats.map((obj) => (
         <ChatList
           key={obj.id}
@@ -66,7 +62,6 @@ export default function Chat(props) {
           userId={props.userId}
         />
       ))}
-
       <h3 className="chat_subtitle">Start chatting with Ryan Johnson</h3>
       <div className="current_chat">
         {/* <p>chat message</p>

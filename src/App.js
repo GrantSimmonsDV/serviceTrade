@@ -12,11 +12,12 @@ import Profile from "./components/profile/Profile";
 function App() {
   const [userId, setUserId] = useState(null);
 
+  //Save the user's id to state to pass down to children components
   const handleUserId = (userId) => {
     setUserId(userId);
   };
 
-  return (
+  return ( 
     <Router>
       <div className="App">
         <Navbar userId={userId} handleUserId={handleUserId} />

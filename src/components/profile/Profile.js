@@ -32,18 +32,21 @@ export default function Profile(props) {
   const [offered, setOffered] = useState([]);
   const [needed, setNeeded] = useState([]);
 
+  //Select the service category from dropdown and save selected index to State.
   const handleSelect = (e) => {
     const output = e.target[e.target.selectedIndex].value;
     setService_Category(output);
   };
 
+  //Take entered text value and save it to State.
   const defineService = (e) => setService_Define(e.target.value);
 
+  // -- e (event) passed in to be set to state --
   const handleOffered = async (e) => await setOffered(e);
   const handleNeeded = async (e) => await setNeeded(e);
 
+  //update profile data
   const handleClick = (e) => {
-    //update profile data
     axios
       .put(`/profile/${props.userId}`, { full_name, profile_pic, city, state })
       .then((res) => {
@@ -52,6 +55,8 @@ export default function Profile(props) {
       });
   };
 
+  //Function passed down as props. Handles deleting offered and needed services on the ServiceN and ServiceO components. 
+  // Note: kept functions in this component becuase their states were in this one already.
   const handleGetO = () => {
     axios.get(`/profile/offered/${props.userId}`).then((res) => {
       setOffered(res.data);

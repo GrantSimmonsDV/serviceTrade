@@ -13,6 +13,7 @@ export default function ServicesN(props) {
     props.service_category
   );
 
+  //Function updates needed service by its unique id. It then is saved to state by handleNeeded function on the Profile component.
   const updateNeededSrv = () => {
     axios
       .put(`/profile/needed/update/${props.id}`, {
@@ -23,16 +24,15 @@ export default function ServicesN(props) {
       .then((res) => {
         props.handleNeeded(res.data);
         alert("Services updated");
-        //Once saved a list of those needed services appear as a list on their profile.
       });
   };
 
   //*********** DELETE
 
+  //Function deletes needed service by its unique id. It then is saved to state by handleGetN function on the Profile component.
   const deleteNeededSrv = () => {
     axios.delete(`/profile/needed/delete/${props.id}`).then((res) => {
       props.handleGetN();
-      //Once saved a list of those needed services appear as a list on their profile.
     });
   };
 
@@ -41,6 +41,7 @@ export default function ServicesN(props) {
       <h4>Saved needed service</h4>
       <select
         id="neededSelect"
+        // onChange takes the event updates state with handleSelect from Profile and then sets the value to be what is state now.
         onChange={(e) => setCategoryOptionN(props.handleSelect(e))}
         value={categoryOptionN}
       >
@@ -54,16 +55,21 @@ export default function ServicesN(props) {
         <option value="goods">Goods</option>
         <option value="home">Home</option>
       </select>
-{/* 
+      {/* 
       <label>Define Service</label> */}
       <input
         type="text"
         value={editN}
+        //onChange takes event and uses entered value to update state from what its been.
         onChange={(e) => setEditN(e.target.value)}
       />
 
-      <button className="edit-button" onClick={updateNeededSrv}>Edit</button>
-      <button  className="delete-button" onClick={deleteNeededSrv}>Delete</button>
+      <button className="edit-button" onClick={updateNeededSrv}>
+        Edit
+      </button>
+      <button className="delete-button" onClick={deleteNeededSrv}>
+        Delete
+      </button>
     </div>
   );
 }

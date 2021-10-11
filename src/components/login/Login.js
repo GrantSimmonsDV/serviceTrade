@@ -13,6 +13,7 @@ export default function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  //Function takes in email and password input from user, sets the user's id to state, sends the user to the Trading page, and alerts user with welcome greeting. 
   const handleClick = (e) => {
     e.preventDefault();
     axios.post("/login", { email, password }).then((res) => {
