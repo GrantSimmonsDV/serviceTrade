@@ -55,7 +55,7 @@ export default function Profile(props) {
       });
   };
 
-  //Function passed down as props. Handles deleting offered and needed services on the ServiceN and ServiceO components. 
+  //Function passed down as props. Handles deleting offered and needed services on the ServiceN and ServiceO components.
   // Note: kept functions in this component becuase their states were in this one already.
   const handleGetO = () => {
     axios.get(`/profile/offered/${props.userId}`).then((res) => {
@@ -177,11 +177,11 @@ export default function Profile(props) {
               --Select Category--
             </option>
             <option value="Yard">Yard</option>
-            <option value="ed">Ed</option>
-            <option value="auto">Auto</option>
-            <option value="pets">Pet</option>
-            <option value="goods">Goods</option>
-            <option value="home">Home</option>
+            <option value="Ed">Ed</option>
+            <option value="Auto">Auto</option>
+            <option value="Pets">Pet</option>
+            <option value="Food">Food</option>
+            <option value="Home">Home</option>
           </select>
 
           <input placeholder="Specifics" type="text" onChange={defineService} />
@@ -213,10 +213,10 @@ export default function Profile(props) {
               --Select Category--
             </option>
             <option value="Yard">Yard</option>
-            <option value="ed">Ed</option>
-            <option value="auto">Auto</option>
-            <option value="pets">Pet</option>
-            <option value="goods">Goods</option>
+            <option value="Ed">Ed</option>
+            <option value="Auto">Auto</option>
+            <option value="Pets">Pet</option>
+            <option value="Food">Food</option>
             <option value="Home">Home</option>
           </select>
 

@@ -49,11 +49,11 @@ export default function ServicesN(props) {
           --Select One--
         </option>
         <option value="Yard">Yard</option>
-        <option value="ed">Ed</option>
-        <option value="auto">Auto</option>
-        <option value="pets">Pet</option>
-        <option value="goods">Goods</option>
-        <option value="home">Home</option>
+        <option value="Ed">Ed</option>
+        <option value="Auto">Auto</option>
+        <option value="Pets">Pet</option>
+        <option value="Food">Food</option>
+        <option value="Home">Home</option>
       </select>
       {/* 
       <label>Define Service</label> */}
