@@ -177,9 +177,9 @@ export default function Profile(props) {
               --Select Category--
             </option>
             <option value="Yard">Yard</option>
-            <option value="Ed">Ed</option>
+            <option value="Education">Education</option>
             <option value="Auto">Auto</option>
-            <option value="Pets">Pet</option>
+            <option value="Pet">Pet</option>
             <option value="Food">Food</option>
             <option value="Home">Home</option>
           </select>
@@ -213,9 +213,9 @@ export default function Profile(props) {
               --Select Category--
             </option>
             <option value="Yard">Yard</option>
-            <option value="Ed">Ed</option>
+            <option value="Education">Education</option>
             <option value="Auto">Auto</option>
-            <option value="Pets">Pet</option>
+            <option value="Pet">Pet</option>
             <option value="Food">Food</option>
             <option value="Home">Home</option>
           </select>

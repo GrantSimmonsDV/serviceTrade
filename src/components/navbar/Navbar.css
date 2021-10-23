@@ -2,6 +2,9 @@
     background-color: rgb(32,37,42);
     display: flex;
     padding: 5px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
     /* position: fixed;
     z-index: 1; */
   }

@@ -66,15 +66,23 @@ VALUES
 
 INSERT INTO offered_service (service_category,service_define, service_image, user_id)
 VALUES
-  ('Auto','mus. Proin vel arcu','https://www.freeimages.com/photo/tractor-3-1386656',1),
-  ('Yard','et malesuada','https://www.freeimages.com/photo/tractor-3-1386656',2),
-  ('Auto','ipsum dolor sit amet, consectetuer','https://www.freeimages.com/photo/tractor-3-1386656',3);
+  ('Auto','I can replace brake pads','https://www.freeimages.com/photo/tractor-3-1386656',1),
+  ('Yard','I am an arborist','https://www.freeimages.com/photo/tractor-3-1386656',2),
+  ('Food','I do birthday cakes','https://www.freeimages.com/photo/tractor-3-1386656',3),
+  ('Education','I offer Spanish tutoring','https://www.freeimages.com/photo/tractor-3-1386656',2),
+  ('Home','I can shovel snow','https://www.freeimages.com/photo/tractor-3-1386656',3),
+  ('Pets','Happy to walk your dog','https://www.freeimages.com/photo/tractor-3-1386656',4),
+  ('Yard','Mowing lawns','https://www.freeimages.com/photo/tractor-3-1386656',1);
  
 INSERT INTO needed_service (service_category,service_define, service_image, user_id)
 VALUES
-  ('Auto','mus. Proin vel arcu','https://www.freeimages.com/photo/tractor-3-1386656',1),
-  ('Yard','et malesuada','https://www.freeimages.com/photo/tractor-3-1386656',2),
-  ('Auto','ipsum dolor sit amet, consectetuer','https://www.freeimages.com/photo/tractor-3-1386656',3);
+  ('Food','A dinner for a Tuesday','https://www.freeimages.com/photo/tractor-3-1386656',1),
+  ('Pets','Feed cat while out of town','https://www.freeimages.com/photo/tractor-3-1386656',2),
+  ('Yard','Pruning fruit trees','https://www.freeimages.com/photo/tractor-3-1386656',3),
+  ('Food','Birthday cake for toddler','https://www.freeimages.com/photo/tractor-3-1386656',2),
+  ('Yard','Mow lawn on weekend','https://www.freeimages.com/photo/tractor-3-1386656',3),
+  ('Education','Help with Calculus','https://www.freeimages.com/photo/tractor-3-1386656',4),
+  ('Auto','Carwash','https://www.freeimages.com/photo/tractor-3-1386656',1);
 
 
 INSERT INTO chat (user_id_1,user_id_2)

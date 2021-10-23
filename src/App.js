@@ -17,7 +17,7 @@ function App() {
     setUserId(userId);
   };
 
-  return ( 
+  return (
     <Router>
       <div className="App">
         <Navbar userId={userId} handleUserId={handleUserId} />
@@ -31,10 +31,10 @@ function App() {
             />
             <Route path="/register" component={Register} />
             <Route path="/trading">
-              <Trading userId={userId}/>
+              <Trading userId={userId} />
             </Route>
             <Route path="/chat">
-              <Chat userId={userId}/>
+              <Chat userId={userId} />
             </Route>
             <Route
               path="/profile"

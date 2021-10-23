@@ -13,7 +13,7 @@ export default function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  //Function takes in email and password input from user, sets the user's id to state, sends the user to the Trading page, and alerts user with welcome greeting. 
+  //Function takes in email and password input from user, sets the user's id to state, sends the user to the Trading page, and alerts user with welcome greeting.
   const handleClick = (e) => {
     e.preventDefault();
     axios.post("/login", { email, password }).then((res) => {
@@ -29,7 +29,7 @@ export default function Login(props) {
 
   return (
     <div className="login">
-      {/* <img src="serve_pic.png" alt="" /> */}
+      {/* <img src="../images/serve_pic.png" alt="" /> */}
       <div className="login_container">
         <h2>Login</h2>
         <form action="" className="login_fields">
@@ -56,7 +56,10 @@ export default function Login(props) {
           Login
         </button>
       </div>
-        <p id="login_info">	&#169; Developed by Grant Simmons. Devmountain-Capstone</p>
+      <p id="login_info">
+        {" "}
+        &#169; Developed by Grant Simmons. Devmountain-Capstone
+      </p>
     </div>
   );
 }

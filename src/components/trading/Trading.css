@@ -1,11 +1,9 @@
-
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
   /* overflow:visible; */
 }
-
 
 .match_card {
   border: none;
@@ -15,6 +13,7 @@
   width: 250px;
   background-color: white;
   position: relative;
+  z-index: 1;
 }
 
 .all_cards {
@@ -27,6 +26,7 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   gap: 50px;
+  /* z-index: 1; */
 
   /* align-content: space-around; */
 }
@@ -39,17 +39,33 @@
 }
 
 .subtitle {
-font-weight: normal;
-font-style: italic;
-margin-bottom: 25px;
+  font-weight: normal;
+  font-style: italic;
+  margin-bottom: 25px;
 }
 
-.trading {
-  background-color:hsl(124, 23%, 86%); ;
+.trading::before {
+  /* background-color:hsl(124, 23%, 86%);
+  height: 100vh; */
+  content: "";
+  width: 100%;
+  position: fixed;
+  background-image: url("../../images/serve_pic.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* object-fit: cover;
+  object-position: -200px 0; */
+  height: 100%;
+  opacity: 0.35;
+  top: 58px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  /* z-index: 1; */
 }
 
 .chat_button {
- /* margin: 8px 10px; */
+  /* margin: 8px 10px; */
   padding: 14px 16px;
   border-radius: 5px;
   background-color: rgb(52, 124, 218);
@@ -72,6 +88,11 @@ h3 {
   margin-top: 20px;
   margin-bottom: 4px;
 }
+
+/* .title {
+  z-index: 1;
+} */
+
 span {
   font-weight: bold;
 }
