@@ -31,6 +31,14 @@ function Navbar(props) {
       <div className="links">
         
         {/* This sets a condition that if the passed down user id is null then display the Login and Regsiter links in the navbar, or if the user id passed down has an id value then display the Trading, Chat, Profile, and Logout links in the navbar */}
+        {/* {!props.userId && (<> <Link to="/login">Login</Link> </>)}
+        {!props.userId && (<> <Link to="/register">Register</Link> </>)}
+        {props.userId && (<> <Link to="/trading">Trading</Link> </>)}
+        {props.userId && (<> <Link to="/chat">Chat</Link> </>)}
+        {props.userId && (<> <Link to="/profile">Profile</Link> </>)}
+        {props.userId && (<>  <button onClick={handleClick} className="logout_button">Logout</button> </>)}
+          */}
+
         {!props.userId && (
           <>
             <Link to="/login">Login</Link>
@@ -47,6 +55,18 @@ function Navbar(props) {
             </button>
           </>
         )}
+        {props.user_id_1 && (
+          <>
+            <Link to="/trading">Trading</Link>
+            <Link to="/chat">Chat</Link>
+            <Link to="/profile">Profile</Link>
+            <button onClick={handleClick} className="logout_button">
+              Logout
+            </button>
+          </>
+        )}
+
+        
       </div>
     </div>
   );

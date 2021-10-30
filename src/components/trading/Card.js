@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Trading.css";
+import Navbar from "../navbar/Navbar";
 
 export default function Card(props) {
   const [saveAllNeeded, setSaveAllNeeded] = useState([]);
@@ -59,6 +60,8 @@ export default function Card(props) {
       <button className="chat_button" onClick={createAChat}>
         Chat
       </button>
+
+      {/* <Navbar user_id_1={user_id_1} /> */}
     </div>
   );
 }

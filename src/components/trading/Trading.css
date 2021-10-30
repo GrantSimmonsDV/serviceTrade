@@ -1,9 +1,11 @@
+
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
   /* overflow:visible; */
 }
+
 
 .match_card {
   border: none;
@@ -39,9 +41,9 @@
 }
 
 .subtitle {
-  font-weight: normal;
-  font-style: italic;
-  margin-bottom: 25px;
+font-weight: normal;
+font-style: italic;
+margin-bottom: 25px;
 }
 
 .trading::before {
@@ -65,7 +67,7 @@
 }
 
 .chat_button {
-  /* margin: 8px 10px; */
+ /* margin: 8px 10px; */
   padding: 14px 16px;
   border-radius: 5px;
   background-color: rgb(52, 124, 218);
